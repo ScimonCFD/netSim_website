@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>netSim</title>
+    <meta
+      name="description"
+      content="netSim is a steady-state pipe-network simulator with support for pipes, fittings, pumps, and a graphical interface."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar">
+          <div class="brand">netSim</div>
+          <div class="toplinks">
+            <a href="#what">What is it?</a>
+            <a href="#workflow">How it works</a>
+            <a href="#benchmarks">Benchmarks</a>
+            <a href="#roadmap">Roadmap</a>
+          </div>
+        </nav>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Pipe-Network Simulation</p>
+            <h1>Steady-state network simulation with pipes, fittings, pumps, and a GUI.</h1>
+            <p class="hero-text">
+              netSim is an open-source simulator for steady-state pipe networks.
+              It computes nodal pressures and component flow rates for
+              incompressible, isothermal, single-phase systems.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button primary" href="https://github.com/ScimonCFD/netSim" target="_blank" rel="noreferrer">
+                View Repository
+              </a>
+              <a class="button secondary" href="#workflow">See Workflow</a>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <div class="hero-card">
+              <div class="card-label">Current release</div>
+              <ul class="feature-list">
+                <li>Pipes</li>
+                <li>Fittings</li>
+                <li>Pumps</li>
+                <li>Pressure boundaries</li>
+                <li>Mass-flow boundaries</li>
+                <li>Graphical interface</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section id="what" class="section">
+          <div class="section-head">
+            <p class="eyebrow">What is netSim?</p>
+            <h2>A simulator for steady-state pipe networks and accessories.</h2>
+          </div>
+          <div class="two-column">
+            <p>
+              netSim is built around the traditional workflow used in hydraulic
+              network software: define sources and sinks, connect them through
+              internal junctions, assign pipes and devices to the links, and run
+              the case from a graphical interface.
+            </p>
+            <p>
+              The current solver supports pipes, fittings, pumps, elevation
+              changes, Darcy-Weisbach/Colebrook-White, and Hazen-Williams.
+              It also includes validated benchmark cases against EPANET-based
+              references.
+            </p>
+          </div>
+        </section>
+
+        <section id="workflow" class="section accent">
+          <div class="section-head">
+            <p class="eyebrow">How is it used?</p>
+            <h2>The main workflow is GUI-first.</h2>
+          </div>
+          <div class="steps">
+            <article class="step">
+              <span class="step-number">01</span>
+              <h3>Launch the GUI</h3>
+              <p>Open the graphical interface and start a new network or load a validated tutorial case.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">02</span>
+              <h3>Build the network</h3>
+              <p>Add sources, sinks, and junctions, then connect them with links and assign pipes, fittings, or pumps.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">03</span>
+              <h3>Configure the case</h3>
+              <p>Define the material, pressure-drop model, and numerical settings from the GUI.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">04</span>
+              <h3>Run and inspect</h3>
+              <p>Run the simulation, inspect convergence, and export converged results to a spreadsheet report.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="benchmarks" class="section">
+          <div class="section-head">
+            <p class="eyebrow">Validation</p>
+            <h2>Benchmark cases already included in the project.</h2>
+          </div>
+          <div class="cards">
+            <article class="info-card">
+              <h3>Hanoi benchmark</h3>
+              <p>
+                A validated EPANET/Darcy-style Hanoi network case used to
+                compare trunk-node heads and trunk-link flows.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>EPANET pump benchmark</h3>
+              <p>
+                A pump-bearing benchmark adapted from the official EPANET
+                tutorial network, including published reference pressures,
+                heads, and flows.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Tutorial suite</h3>
+              <p>
+                Pipe-only, fittings, elevation, inlet-flow, outlet-flow, and
+                combined-boundary cases are available for smoke testing and onboarding.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="roadmap" class="section dark">
+          <div class="section-head">
+            <p class="eyebrow">Long-term objective</p>
+            <h2>Grow from steady-state hydraulics toward broader pipeline simulation.</h2>
+          </div>
+          <div class="roadmap-grid">
+            <div class="roadmap-item">Steady, non-isothermal flow</div>
+            <div class="roadmap-item">Compressible flow</div>
+            <div class="roadmap-item">Multiphase flow</div>
+            <div class="roadmap-item">Multicomponent flow</div>
+            <div class="roadmap-item">Hydrocarbon-network support</div>
+            <div class="roadmap-item">Broader device library</div>
+          </div>
+        </section>
+
+        <section class="section compact">
+          <div class="section-head">
+            <p class="eyebrow">Contact</p>
+            <h2>Simon Rodriguez</h2>
+          </div>
+          <p class="contact-note">
+            Repository, documentation, tutorials, and future publications will
+            be linked from the public project pages.
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

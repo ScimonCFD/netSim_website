@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>netSim Methods</title>
+    <meta
+      name="description"
+      content="Numerical method overview for netSim, including the pressure-correction workflow for laminar pipes, turbulent pipes, accessories, and pumps."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero compact-hero">
+        <nav class="topbar">
+          <div class="brand"><a href="index.html">netSim</a></div>
+          <div class="toplinks">
+            <a href="index.html">Home</a>
+            <a href="#workflow-map">Workflow</a>
+            <a href="#element-laws">Element laws</a>
+            <a href="#notes">Notes</a>
+          </div>
+        </nav>
+
+        <div class="hero-grid methods-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Numerical Method</p>
+            <h1>Pressure-correction workflow for the steady, incompressible, isothermal solver.</h1>
+            <p class="hero-text">
+              netSim uses a pressure-correction strategy that first builds a
+              laminar solution and then uses that field as the initial condition
+              for the nonlinear solve. The local pressure-correction relation is
+              built differently for pipes, accessories, and pumps, but all of
+              them enter the same nodal continuity framework.
+            </p>
+          </div>
+
+          <div class="hero-panel">
+            <div class="hero-card">
+              <div class="card-label">Solver family</div>
+              <ul class="feature-list">
+                <li>Assume pressure field</li>
+                <li>Estimate link velocities</li>
+                <li>Assemble pressure correction</li>
+                <li>Correct pressures and flows</li>
+                <li>Converge laminar field</li>
+                <li>Use it to start nonlinear solve</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section id="workflow-map" class="section">
+          <div class="section-head">
+            <p class="eyebrow">Workflow</p>
+            <h2>High-level solution sequence.</h2>
+          </div>
+
+          <div class="workflow-figure">
+            <div class="workflow-column">
+              <div class="workflow-label">Laminar stage</div>
+              <div class="workflow-box">Assume an initial pressure field <code>p*</code></div>
+              <div class="workflow-arrow">↓</div>
+              <div class="workflow-box">Estimate link velocities using the laminar element equations</div>
+              <div class="workflow-arrow">↓</div>
+              <div class="workflow-box">Update mass flows with <code>m = ρ A v</code></div>
+              <div class="workflow-arrow">↓</div>
+              <div class="workflow-box">
+                Assemble the pressure-correction system
+                <span class="workflow-note">Laminar pipe coefficients from the linear pressure-flow relation</span>
+              </div>
+              <div class="workflow-arrow">↓</div>
+              <div class="workflow-box">Solve pressure correction and update pressure and velocity</div>
+              <div class="workflow-arrow">↓</div>
+              <div class="workflow-box">Repeat until laminar convergence</div>
+            </div>
+
+            <div class="workflow-divider"></div>
+
+            <div class="workflow-column">
+              <div class="workflow-label">Nonlinear stage</div>
+              <div class="workflow-box">Use the converged laminar field as the initial condition</div>
+              <div class="workflow-arrow">↓</div>
+              <div class="workflow-box">
+                Recompute link velocities with the nonlinear element laws
+                <span class="workflow-note">Turbulent pipes, accessories, and pumps</span>
+              </div>
+              <div class="workflow-arrow">↓</div>
+              <div class="workflow-box">Update mass flows</div>
+              <div class="workflow-arrow">↓</div>
+              <div class="workflow-box">
+                Assemble the nonlinear pressure-correction system
+                <span class="workflow-note">Each element contributes its own local pressure-correction coefficient</span>
+              </div>
+              <div class="workflow-arrow">↓</div>
+              <div class="workflow-box">Solve, correct, and iterate</div>
+              <div class="workflow-arrow">↓</div>
+              <div class="workflow-box">Stop when the field converges</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="element-laws" class="section accent">
+          <div class="section-head">
+            <p class="eyebrow">Element laws</p>
+            <h2>How each component enters the correction equation.</h2>
+          </div>
+
+          <div class="cards four-up">
+            <article class="info-card">
+              <h3>Laminar pipes</h3>
+              <p>
+                In laminar flow, the pressure-flow relation is linear. That
+                makes it possible to generate an exact local pressure-correction
+                relation for the pipe.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Turbulent pipes</h3>
+              <p>
+                In turbulent flow, the pressure-flow relation is nonlinear, so
+                the local pressure-correction relation is constructed from the
+                current state and updated during the iteration process.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Accessories</h3>
+              <p>
+                Accessories are treated through local-loss relations. Their own
+                pressure-flow expression produces the local coefficient used in
+                the system assembly.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Pumps</h3>
+              <p>
+                Pumps are treated as pressure-changing devices. The assumed
+                pressure difference implies a required head, the pump curve gives
+                the corresponding flow, and the local derivative supplies the
+                correction coupling.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="notes" class="section dark">
+          <div class="section-head">
+            <p class="eyebrow">Interpretation</p>
+            <h2>One continuity framework, different local laws.</h2>
+          </div>
+          <div class="two-column">
+            <p>
+              The key idea is that the global nodal system always comes from
+              continuity. What changes from one link type to another is the way
+              the local pressure-correction contribution is generated.
+            </p>
+            <p>
+              In practice, pipes, accessories, and pumps all enter the same
+              assembly process once their local relation between pressure
+              difference and flow has been linearized around the current state.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

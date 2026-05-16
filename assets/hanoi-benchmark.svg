@@ -1,0 +1,87 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" rx="24" fill="#F4F1EA"/>
+  <rect x="18" y="18" width="240" height="864" rx="18" fill="#E8E4DA"/>
+  <rect x="280" y="18" width="1102" height="864" rx="18" fill="#FBF8F1"/>
+
+  <rect x="42" y="70" width="88" height="26" rx="6" fill="#F6F2E7" stroke="#B8B0A2"/>
+  <text x="86" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" fill="#243440">Run</text>
+
+  <text x="42" y="46" font-family="Segoe UI, sans-serif" font-size="18" fill="#243440">Node Palette</text>
+  <text x="42" y="176" font-family="Segoe UI, sans-serif" font-size="16" fill="#243440">Material</text>
+  <text x="42" y="252" font-family="Segoe UI, sans-serif" font-size="16" fill="#243440">Pipe Model</text>
+  <text x="42" y="334" font-family="Segoe UI, sans-serif" font-size="16" fill="#243440">Numerics</text>
+
+  <rect x="42" y="188" width="170" height="42" rx="8" fill="#F6F2E7" stroke="#C7BFB0"/>
+  <text x="56" y="205" font-family="Segoe UI, sans-serif" font-size="12" fill="#243440">Water</text>
+  <text x="56" y="221" font-family="Segoe UI, sans-serif" font-size="11" fill="#56636D">rho=998.25   mu=0.001</text>
+
+  <rect x="42" y="264" width="170" height="30" rx="8" fill="#F6F2E7" stroke="#C7BFB0"/>
+  <text x="56" y="284" font-family="Segoe UI, sans-serif" font-size="12" fill="#243440">Colebrook-White</text>
+
+  <rect x="42" y="346" width="170" height="86" rx="8" fill="#F6F2E7" stroke="#C7BFB0"/>
+  <text x="56" y="367" font-family="Segoe UI, sans-serif" font-size="12" fill="#243440">laminar=50</text>
+  <text x="56" y="385" font-family="Segoe UI, sans-serif" font-size="12" fill="#243440">turbulent=300</text>
+  <text x="56" y="403" font-family="Segoe UI, sans-serif" font-size="12" fill="#243440">alpha=0.3</text>
+
+  <g stroke="#55677B" stroke-width="4" stroke-linecap="round">
+    <line x1="430" y1="316" x2="575" y2="316"/>
+    <line x1="575" y1="316" x2="720" y2="316"/>
+    <line x1="720" y1="316" x2="870" y2="316"/>
+    <line x1="870" y1="316" x2="1010" y2="316"/>
+    <line x1="1010" y1="316" x2="1140" y2="316"/>
+    <line x1="430" y1="316" x2="430" y2="516"/>
+    <line x1="575" y1="316" x2="575" y2="556"/>
+    <line x1="720" y1="316" x2="720" y2="546"/>
+    <line x1="1140" y1="316" x2="1140" y2="562"/>
+    <line x1="430" y1="516" x2="575" y2="516"/>
+    <line x1="575" y1="516" x2="720" y2="516"/>
+    <line x1="720" y1="516" x2="860" y2="516"/>
+    <line x1="860" y1="516" x2="1000" y2="516"/>
+    <line x1="1000" y1="516" x2="1140" y2="516"/>
+    <line x1="860" y1="516" x2="860" y2="642"/>
+    <line x1="1000" y1="516" x2="1000" y2="646"/>
+    <line x1="575" y1="316" x2="500" y2="236"/>
+    <line x1="720" y1="316" x2="720" y2="192"/>
+    <line x1="1000" y1="516" x2="1085" y2="612"/>
+    <line x1="430" y1="516" x2="356" y2="606"/>
+    <line x1="1140" y1="562" x2="1242" y2="584"/>
+    <line x1="1140" y1="316" x2="1230" y2="230"/>
+  </g>
+
+  <g font-family="Segoe UI, sans-serif" font-size="13" text-anchor="middle">
+    <g fill="#EB8A82" stroke="#2C4052" stroke-width="2">
+      <circle cx="720" cy="112" r="26"/><text x="720" y="117" fill="#1F2B36">S</text>
+      <circle cx="690" cy="192" r="26"/><text x="690" y="197" fill="#1F2B36">K</text>
+      <circle cx="500" cy="236" r="26"/><text x="500" y="241" fill="#1F2B36">K</text>
+      <circle cx="1230" cy="230" r="26"/><text x="1230" y="235" fill="#1F2B36">K</text>
+      <circle cx="356" cy="606" r="26"/><text x="356" y="611" fill="#1F2B36">K</text>
+      <circle cx="1085" cy="612" r="26"/><text x="1085" y="617" fill="#1F2B36">K</text>
+      <circle cx="1242" cy="584" r="26"/><text x="1242" y="589" fill="#1F2B36">K</text>
+      <circle cx="860" cy="642" r="26"/><text x="860" y="647" fill="#1F2B36">K</text>
+      <circle cx="1000" cy="646" r="26"/><text x="1000" y="651" fill="#1F2B36">K</text>
+    </g>
+    <g fill="#ECE7DB" stroke="#2C4052" stroke-width="2">
+      <circle cx="430" cy="316" r="28"/><text x="430" y="321" fill="#1F2B36">J</text>
+      <circle cx="575" cy="316" r="28"/><text x="575" y="321" fill="#1F2B36">J</text>
+      <circle cx="720" cy="316" r="28"/><text x="720" y="321" fill="#1F2B36">J</text>
+      <circle cx="870" cy="316" r="28"/><text x="870" y="321" fill="#1F2B36">J</text>
+      <circle cx="1010" cy="316" r="28"/><text x="1010" y="321" fill="#1F2B36">J</text>
+      <circle cx="1140" cy="316" r="28"/><text x="1140" y="321" fill="#1F2B36">J</text>
+      <circle cx="430" cy="516" r="28"/><text x="430" y="521" fill="#1F2B36">J</text>
+      <circle cx="575" cy="556" r="28"/><text x="575" y="561" fill="#1F2B36">J</text>
+      <circle cx="575" cy="516" r="28"/><text x="575" y="521" fill="#1F2B36">J</text>
+      <circle cx="720" cy="546" r="28"/><text x="720" y="551" fill="#1F2B36">J</text>
+      <circle cx="720" cy="516" r="28"/><text x="720" y="521" fill="#1F2B36">J</text>
+      <circle cx="860" cy="516" r="28"/><text x="860" y="521" fill="#1F2B36">J</text>
+      <circle cx="1000" cy="516" r="28"/><text x="1000" y="521" fill="#1F2B36">J</text>
+      <circle cx="1140" cy="516" r="28"/><text x="1140" y="521" fill="#1F2B36">J</text>
+      <circle cx="860" cy="642" r="28"/><text x="860" y="647" fill="#1F2B36">J</text>
+      <circle cx="1000" cy="646" r="28"/><text x="1000" y="651" fill="#1F2B36">J</text>
+    </g>
+  </g>
+
+  <text x="320" y="110" font-family="Georgia, serif" font-size="36" fill="#243440">Validated Hanoi Benchmark</text>
+  <text x="320" y="150" font-family="Segoe UI, sans-serif" font-size="20" fill="#5B6974">
+    Example GUI result used to validate the steady incompressible solver.
+  </text>
+</svg>

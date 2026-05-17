@@ -317,10 +317,20 @@ a {
   background: var(--line);
 }
 
-.roadmap-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+.roadmap-flow {
+  display: flex;
+  flex-direction: column;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.roadmap-connector {
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.4rem;
+  padding: 2px 0;
+  line-height: 1;
 }
 
 .roadmap-item {

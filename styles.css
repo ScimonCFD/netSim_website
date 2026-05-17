@@ -350,6 +350,21 @@ a {
   opacity: 0.62;
 }
 
+.roadmap-item.horizon {
+  opacity: 0.38;
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.roadmap-connector--faint {
+  opacity: 0.35;
+}
+
+.roadmap-tag--horizon {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 241, 214, 0.6);
+}
+
 .roadmap-tag {
   display: inline-block;
   margin-bottom: 10px;

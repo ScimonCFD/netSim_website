@@ -422,6 +422,15 @@ a {
   max-width: none;
 }
 
+.section.colophon {
+  text-align: center;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .contact-note {
   max-width: 54ch;
   margin: 0 auto;

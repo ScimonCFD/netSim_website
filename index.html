@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Angelica</title>
+    <title>Angelica — Pipe Network Simulation</title>
     <meta
       name="description"
-      content="Angelica is a steady-state pipe-network simulator with support for pipes, fittings, pumps, and a graphical interface."
+      content="Open-source steady-state pipe network simulator. Pipes, fittings, pumps, and a graphical interface. Validated against EPANET benchmarks."
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="assets/logomark.svg" type="image/svg+xml" />
@@ -20,49 +20,68 @@
             Angelica
           </div>
           <div class="toplinks">
-            <a href="#what">What is it?</a>
-            <a href="#workflow">How it works</a>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#workflow">Workflow</a>
             <a href="#benchmarks">Benchmarks</a>
             <a href="methods.html">Methods</a>
             <a href="#roadmap">Roadmap</a>
           </div>
+          <a class="button primary small" href="https://github.com/ScimonCFD/Angelica" target="_blank" rel="noreferrer">GitHub &rarr;</a>
         </nav>
 
         <div class="hero-grid">
           <div class="hero-copy">
             <p class="eyebrow">Pipe-Network Simulation</p>
-            <h1>Steady-state pipe and accessories network simulator.</h1>
+            <h1>Pressures and flows for steady-state pipe networks.</h1>
             <p class="hero-text">
-              Open source, no hidden cost, and built around the traditional
-              workflow engineers already know.
+              Angelica computes nodal pressures and component flow rates for
+              incompressible, isothermal networks with pipes, fittings, and
+              pumps. Built around the workflow engineers already know.
             </p>
+
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat-value">8</span>
+                <span class="stat-label">Tutorial cases</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <span class="stat-value">2</span>
+                <span class="stat-label">EPANET benchmarks</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat">
+                <span class="stat-value">MIT</span>
+                <span class="stat-label">Open source</span>
+              </div>
+            </div>
 
             <div class="hero-actions">
               <a class="button primary" href="https://github.com/ScimonCFD/Angelica" target="_blank" rel="noreferrer">
-                View Repository
+                View on GitHub
               </a>
-              <a class="button secondary" href="methods.html">See Numerical Method</a>
+              <a class="button secondary" href="methods.html">See the method &rarr;</a>
             </div>
           </div>
 
           <div class="hero-panel">
             <div class="slider" id="hero-slider">
               <div class="slide active">
-                <img src="assets/slide_pipe.svg" alt="Pipe network tutorial" class="slide-img"/>
+                <img src="assets/slide_pipe.svg" class="slide-img" />
                 <p class="slide-caption">Tutorial 01 &mdash; Pipe network</p>
               </div>
               <div class="slide">
-                <img src="assets/slide_hanoi.svg" alt="Hanoi benchmark" class="slide-img"/>
-                <p class="slide-caption">Benchmark &mdash; Hanoi network</p>
+                <img src="assets/slide_hanoi.svg" class="slide-img" />
+                <p class="slide-caption">Benchmark &mdash; Hanoi network (32 nodes)</p>
               </div>
               <div class="slide">
-                <img src="assets/slide_pump.svg" alt="EPANET pump benchmark" class="slide-img"/>
+                <img src="assets/slide_pump.svg" class="slide-img" />
                 <p class="slide-caption">Benchmark &mdash; EPANET pump network</p>
               </div>
               <div class="slider-dots">
-                <button class="dot active" onclick="goSlide(0)"></button>
-                <button class="dot" onclick="goSlide(1)"></button>
-                <button class="dot" onclick="goSlide(2)"></button>
+                <button class="dot active" data-slide="0"></button>
+                <button class="dot" data-slide="1"></button>
+                <button class="dot" data-slide="2"></button>
               </div>
             </div>
           </div>
@@ -70,31 +89,83 @@
       </header>
 
       <main>
-        <section id="what" class="section">
+        <section id="capabilities" class="section">
           <div class="section-head">
-            <p class="eyebrow">What is Angelica?</p>
-            <h2>A simulator for steady-state pipe networks and accessories.</h2>
+            <p class="eyebrow">Capabilities</p>
+            <h2>Everything needed to simulate a pipe network.</h2>
           </div>
-          <div class="two-column">
-            <p>
-              Angelica is built around the traditional workflow used in hydraulic
-              network software: define sources and sinks, connect them through
-              internal junctions, assign pipes and devices to the links, and run
-              the case from a graphical interface.
-            </p>
-            <p>
-              The current solver supports pipes, fittings, pumps, elevation
-              changes, Darcy-Weisbach/Colebrook-White, and Hazen-Williams.
-              It also includes validated benchmark cases against EPANET-based
-              references.
-            </p>
+          <div class="cap-grid">
+            <article class="cap-card">
+              <div class="cap-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+                  <rect x="2" y="9" width="20" height="6" rx="3"/>
+                </svg>
+              </div>
+              <h3>Pipes</h3>
+              <p>Darcy-Weisbach friction with Colebrook-White or Hazen-Williams closure. Arbitrary length, diameter, and wall roughness.</p>
+            </article>
+
+            <article class="cap-card">
+              <div class="cap-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+                  <path d="M3 9h7a5 5 0 0 1 5 5v3"/>
+                  <path d="M3 15h4"/>
+                </svg>
+              </div>
+              <h3>Fittings</h3>
+              <p>Local-loss accessories from a built-in library or a custom loss coefficient. Elbows, valves, tees, and any fitting with a known K.</p>
+            </article>
+
+            <article class="cap-card">
+              <div class="cap-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M8 12h8M14 9l3 3-3 3"/>
+                </svg>
+              </div>
+              <h3>Pumps</h3>
+              <p>Single-point EPANET curve model and piecewise-linear multi-point curves. Flow computed directly from the required operating head.</p>
+            </article>
+
+            <article class="cap-card">
+              <div class="cap-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+                  <circle cx="12" cy="12" r="4"/>
+                  <path d="M2 12h6M16 12h6M19 9l3 3-3 3"/>
+                </svg>
+              </div>
+              <h3>Boundary conditions</h3>
+              <p>Pressure and mass-flow boundaries on any node. Mixed types — pressure sources, pressure sinks, flow inlets, flow outlets — on the same network.</p>
+            </article>
+
+            <article class="cap-card">
+              <div class="cap-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                </svg>
+              </div>
+              <h3>Graphical interface</h3>
+              <p>Build and edit networks without writing code. Inspect convergence, review nodal and link results, and export a spreadsheet report.</p>
+            </article>
+
+            <article class="cap-card">
+              <div class="cap-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"/>
+                  <polyline points="8 6 2 12 8 18"/>
+                </svg>
+              </div>
+              <h3>Open source</h3>
+              <p>MIT license. Full source on GitHub. No subscriptions, no license fees, no vendor lock-in. Use it, fork it, extend it.</p>
+            </article>
           </div>
         </section>
 
         <section id="workflow" class="section accent">
           <div class="section-head">
-            <p class="eyebrow">How is it used?</p>
-            <h2>The main workflow is GUI-first.</h2>
+            <p class="eyebrow">Workflow</p>
+            <h2>GUI-first, from network to results.</h2>
           </div>
           <div class="steps">
             <article class="step">
@@ -114,8 +185,8 @@
             </article>
             <article class="step">
               <span class="step-number">04</span>
-              <h3>Run and inspect</h3>
-              <p>Run the simulation, inspect convergence, and export converged results to a spreadsheet report.</p>
+              <h3>Run and export</h3>
+              <p>Run the solver, inspect convergence, review nodal pressures and link flows, and export the results to a spreadsheet.</p>
             </article>
           </div>
         </section>
@@ -123,41 +194,24 @@
         <section id="benchmarks" class="section">
           <div class="section-head">
             <p class="eyebrow">Validation</p>
-            <h2>Benchmark cases already included in the project.</h2>
+            <h2>Benchmarked against published reference solutions.</h2>
           </div>
           <div class="cards">
             <article class="info-card">
               <h3>Hanoi benchmark</h3>
-              <p>
-                A validated EPANET/Darcy-style Hanoi network case used to
-                compare trunk-node heads and trunk-link flows.
-              </p>
+              <p>32-junction, 34-pipe network solved with Darcy-Weisbach and the Colebrook-White equation. Nodal heads and link flows validated against the published EPANET reference solution.</p>
             </article>
             <article class="info-card">
               <h3>EPANET pump benchmark</h3>
-              <p>
-                A pump-bearing benchmark adapted from the official EPANET
-                tutorial network, including published reference pressures,
-                heads, and flows.
-              </p>
+              <p>Pump-bearing network adapted from the official EPANET tutorial. Pump operating point, nodal pressures, and link flows validated against the published reference.</p>
             </article>
             <article class="info-card">
               <h3>Tutorial suite</h3>
-              <p>
-                Pipe-only, fittings, elevation, inlet-flow, outlet-flow, and
-                combined-boundary cases are available for smoke testing and onboarding.
-              </p>
+              <p>Eight cases covering pipes, fittings, elevation changes, inlet-flow, outlet-flow, and combined boundaries — available for smoke testing and onboarding.</p>
             </article>
-            <article class="info-card">
-              <h3>Numerical method</h3>
-              <p>
-                A dedicated methods page describes the pressure-correction
-                workflow for laminar pipes, turbulent pipes, accessories, and pumps.
-              </p>
-              <p class="card-link">
-                <a href="methods.html">Open methods page</a>
-              </p>
-            </article>
+          </div>
+          <div class="methods-callout">
+            <p>The pressure-correction algorithm, element laws, and solver strategy are documented in detail on the <a href="methods.html">methods page</a>.</p>
           </div>
         </section>
 
@@ -193,28 +247,41 @@
 
           </div>
         </section>
-
-        <section class="section colophon">
-          <p class="contact-note">
-            Angelica is created and maintained by
-            <a href="https://www.linkedin.com/in/simonrodriguezl" target="_blank" rel="noreferrer">Simon Rodriguez</a>,
-            a Venezuelan researcher currently based in Dublin, Ireland.
-          </p>
-        </section>
       </main>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <img src="assets/logomark.svg" alt="" class="brand-mark footer-mark" />
+          <span>Angelica</span>
+        </div>
+        <nav class="footer-links">
+          <a href="#capabilities">Capabilities</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#benchmarks">Benchmarks</a>
+          <a href="methods.html">Methods</a>
+          <a href="https://github.com/ScimonCFD/Angelica" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/simonrodriguezl" target="_blank" rel="noreferrer">LinkedIn</a>
+        </nav>
+        <p class="footer-copy">
+          Created by <a href="https://www.linkedin.com/in/simonrodriguezl" target="_blank" rel="noreferrer">Simon Rodriguez</a>
+          &nbsp;&middot;&nbsp; MIT License &nbsp;&middot;&nbsp; 2025
+        </p>
+      </footer>
     </div>
-  <script>
-    let current = 0;
-    const slides = document.querySelectorAll('#hero-slider .slide');
-    const dots   = document.querySelectorAll('#hero-slider .dot');
-    function goSlide(n) {
-      slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = n;
-      slides[current].classList.add('active');
-      dots[current].classList.add('active');
-    }
-    setInterval(() => goSlide((current + 1) % slides.length), 3500);
-  </script>
+
+    <script>
+      let current = 0;
+      const slider = document.getElementById('hero-slider');
+      const slides = slider.querySelectorAll('.slide');
+      const dots   = slider.querySelectorAll('.dot');
+      function showSlide(n) {
+        slides.forEach((s, i) => { s.style.display = i === n ? 'flex' : 'none'; });
+        dots.forEach((d, i) => d.classList.toggle('active', i === n));
+        current = n;
+      }
+      dots.forEach(d => d.addEventListener('click', () => showSlide(+d.dataset.slide)));
+      showSlide(0);
+      setInterval(() => showSlide((current + 1) % slides.length), 4000);
+    </script>
   </body>
 </html>

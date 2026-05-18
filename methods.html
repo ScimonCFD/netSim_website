@@ -192,5 +192,24 @@
         </p>
       </footer>
     </div>
+  <script>
+    if ('IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealTargets = document.querySelectorAll(
+        '.info-card, .workflow-box, .section-head'
+      );
+      const obs = new IntersectionObserver(
+        entries => entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); }
+        }),
+        { threshold: 0.1 }
+      );
+      revealTargets.forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i % 4) * 60 + 'ms';
+        obs.observe(el);
+      });
+    }
+  </script>
   </body>
 </html>

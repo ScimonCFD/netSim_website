@@ -333,13 +333,41 @@
       const slides = slider.querySelectorAll('.slide');
       const dots   = slider.querySelectorAll('.dot');
       function showSlide(n) {
-        slides.forEach((s, i) => { s.style.display = i === n ? 'flex' : 'none'; });
+        slides.forEach((s, i) => {
+          if (i === n) {
+            s.style.display = 'flex';
+            s.style.animation = 'none';
+            void s.offsetWidth;
+            s.style.animation = 'slideFadeIn 0.35s ease';
+          } else {
+            s.style.display = 'none';
+          }
+        });
         dots.forEach((d, i) => d.classList.toggle('active', i === n));
         current = n;
       }
       dots.forEach(d => d.addEventListener('click', () => showSlide(+d.dataset.slide)));
       showSlide(0);
       setInterval(() => showSlide((current + 1) % slides.length), 4000);
+
+      // Scroll reveal
+      if ('IntersectionObserver' in window &&
+          !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const revealTargets = document.querySelectorAll(
+          '.value-card, .cap-card, .step, .info-card, .roadmap-item, .section-head'
+        );
+        const obs = new IntersectionObserver(
+          entries => entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); }
+          }),
+          { threshold: 0.1 }
+        );
+        revealTargets.forEach((el, i) => {
+          el.classList.add('reveal');
+          el.style.transitionDelay = (i % 4) * 60 + 'ms';
+          obs.observe(el);
+        });
+      }
     </script>
   </body>
 </html>

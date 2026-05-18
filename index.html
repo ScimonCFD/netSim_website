@@ -46,16 +46,24 @@
           </div>
 
           <div class="hero-panel">
-            <div class="hero-card">
-              <div class="card-label">Current release</div>
-              <ul class="feature-list">
-                <li>Pipes</li>
-                <li>Fittings</li>
-                <li>Pumps</li>
-                <li>Pressure boundaries</li>
-                <li>Mass-flow boundaries</li>
-                <li>Graphical interface</li>
-              </ul>
+            <div class="slider" id="hero-slider">
+              <div class="slide active">
+                <img src="assets/slide_pipe.svg" alt="Pipe network tutorial" class="slide-img"/>
+                <p class="slide-caption">Tutorial 01 &mdash; Pipe network</p>
+              </div>
+              <div class="slide">
+                <img src="assets/slide_hanoi.svg" alt="Hanoi benchmark" class="slide-img"/>
+                <p class="slide-caption">Benchmark &mdash; Hanoi network</p>
+              </div>
+              <div class="slide">
+                <img src="assets/slide_pump.svg" alt="EPANET pump benchmark" class="slide-img"/>
+                <p class="slide-caption">Benchmark &mdash; EPANET pump network</p>
+              </div>
+              <div class="slider-dots">
+                <button class="dot active" onclick="goSlide(0)"></button>
+                <button class="dot" onclick="goSlide(1)"></button>
+                <button class="dot" onclick="goSlide(2)"></button>
+              </div>
             </div>
           </div>
         </div>
@@ -195,5 +203,18 @@
         </section>
       </main>
     </div>
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('#hero-slider .slide');
+    const dots   = document.querySelectorAll('#hero-slider .dot');
+    function goSlide(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = n;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    setInterval(() => goSlide((current + 1) % slides.length), 3500);
+  </script>
   </body>
 </html>

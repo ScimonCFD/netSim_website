@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 540">
+
+  <!-- Background -->
+  <rect width="500" height="540" fill="#070c17"/>
+
+  <defs>
+    <!-- Edge gradients: blue at source, light at junctions, orange at sinks -->
+    <linearGradient id="g-s-jl" x1="90" y1="375" x2="155" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3a9fd4"/>
+      <stop offset="100%" stop-color="#c8d4dc"/>
+    </linearGradient>
+    <linearGradient id="g-jl-kt" x1="155" y1="220" x2="250" y2="75" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c8d4dc"/>
+      <stop offset="100%" stop-color="#e8633a"/>
+    </linearGradient>
+    <linearGradient id="g-jr-kt" x1="345" y1="220" x2="250" y2="75" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c8d4dc"/>
+      <stop offset="100%" stop-color="#e8633a"/>
+    </linearGradient>
+    <linearGradient id="g-jl-jr" x1="155" y1="220" x2="345" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c8d4dc"/>
+      <stop offset="100%" stop-color="#c8d4dc"/>
+    </linearGradient>
+    <linearGradient id="g-jr-kb" x1="345" y1="220" x2="410" y2="375" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c8d4dc"/>
+      <stop offset="100%" stop-color="#e8633a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Edges -->
+  <line x1="90"  y1="375" x2="155" y2="220" stroke="url(#g-s-jl)"  stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="155" y1="220" x2="250" y2="75"  stroke="url(#g-jl-kt)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="345" y1="220" x2="250" y2="75"  stroke="url(#g-jr-kt)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="155" y1="220" x2="345" y2="220" stroke="url(#g-jl-jr)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="345" y1="220" x2="410" y2="375" stroke="url(#g-jr-kb)" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Junction nodes -->
+  <circle cx="155" cy="220" r="27" fill="#070c17" stroke="#c8d4dc" stroke-width="1.8"/>
+  <circle cx="345" cy="220" r="27" fill="#070c17" stroke="#c8d4dc" stroke-width="1.8"/>
+
+  <!-- Sink nodes (orange) -->
+  <circle cx="250" cy="75"  r="27" fill="#070c17" stroke="#e8633a" stroke-width="1.8"/>
+  <circle cx="410" cy="375" r="27" fill="#070c17" stroke="#e8633a" stroke-width="1.8"/>
+
+  <!-- Source node (blue) -->
+  <circle cx="90"  cy="375" r="27" fill="#070c17" stroke="#3a9fd4" stroke-width="1.8"/>
+
+  <!-- Node labels -->
+  <text x="250" y="75"  text-anchor="middle" dominant-baseline="central" fill="#e8633a" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="16" font-weight="500">K</text>
+  <text x="155" y="220" text-anchor="middle" dominant-baseline="central" fill="#c8d4dc" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="16" font-weight="500">J</text>
+  <text x="345" y="220" text-anchor="middle" dominant-baseline="central" fill="#c8d4dc" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="16" font-weight="500">J</text>
+  <text x="90"  y="375" text-anchor="middle" dominant-baseline="central" fill="#3a9fd4" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="16" font-weight="500">S</text>
+  <text x="410" y="375" text-anchor="middle" dominant-baseline="central" fill="#e8633a" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="16" font-weight="500">K</text>
+
+  <!-- Project name -->
+  <text x="250" y="468" text-anchor="middle" fill="white"
+        font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-size="46" font-weight="300" letter-spacing="16">ANGELICA</text>
+
+  <!-- Tagline -->
+  <text x="250" y="508" text-anchor="middle"
+        font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-size="12" letter-spacing="4">
+    <tspan fill="#7a9aaa">FLUID NETWORKS. </tspan><tspan fill="#3a9fd4">SOLVED.</tspan>
+  </text>
+
+</svg>

@@ -515,12 +515,12 @@ a {
   background: #070c17;
 }
 
-.slide {
+.slider .slide {
   display: none;
   flex-direction: column;
 }
 
-.slide.active {
+.slider .slide.active {
   display: flex;
 }
 

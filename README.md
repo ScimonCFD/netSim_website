@@ -1,6 +1,6 @@
-# netSim Website
+# Angelica Website
 
-This folder contains a simple static website starter for `netSim`.
+This folder contains a simple static website starter for `Angelica`.
 
 ## Files
 

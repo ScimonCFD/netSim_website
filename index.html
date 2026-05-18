@@ -155,32 +155,40 @@
             <h2>From incompressible, isothermal flow toward multiphase multicomponent pipeline simulation.</h2>
           </div>
           <div class="roadmap-grid">
-            <div class="roadmap-item current" style="grid-column:1;grid-row:1">
+
+            <!-- Sub-nodes feeding into Current (col 1 only) -->
+            <div class="sub-nodes-row" style="grid-column:1;grid-row:1">
+              <div class="sub-node complete">Water</div>
+              <div class="sub-node wip">Oil</div>
+            </div>
+            <div class="sub-arrows-row" style="grid-column:1;grid-row:2">
+              <span>&#8595;</span>
+              <span>&#8595;</span>
+            </div>
+
+            <!-- Main row 1 -->
+            <div class="roadmap-item current" style="grid-column:1;grid-row:3">
               <span class="roadmap-tag">Current</span>
               Steady, incompressible, isothermal flow
-              <div class="fluid-diagram">
-                <div class="fluid-feed complete">Water</div>
-                <div class="fluid-feed wip">Oil</div>
-                <div class="fluid-arrow-down">&#8595;</div>
-                <div class="fluid-arrow-down">&#8595;</div>
-                <div class="fluid-target">Liquid</div>
-              </div>
             </div>
-            <div class="roadmap-arrow" style="grid-column:2;grid-row:1">&#8594;</div>
-            <div class="roadmap-item future" style="grid-column:3;grid-row:1">Steady, non-isothermal flow</div>
-            <div class="roadmap-arrow" style="grid-column:4;grid-row:1">&#8594;</div>
-            <div class="roadmap-item future" style="grid-column:5;grid-row:1">Compressible flow</div>
+            <div class="roadmap-arrow" style="grid-column:2;grid-row:3">&#8594;</div>
+            <div class="roadmap-item future" style="grid-column:3;grid-row:3">Steady, non-isothermal flow</div>
+            <div class="roadmap-arrow" style="grid-column:4;grid-row:3">&#8594;</div>
+            <div class="roadmap-item future" style="grid-column:5;grid-row:3">Compressible flow</div>
 
-            <div class="roadmap-arrow" style="grid-column:5;grid-row:2;text-align:center">&#8595;</div>
+            <!-- Down connector -->
+            <div class="roadmap-arrow" style="grid-column:5;grid-row:4;text-align:center">&#8595;</div>
 
-            <div class="roadmap-item future" style="grid-column:5;grid-row:3">Multiphase flow</div>
-            <div class="roadmap-arrow" style="grid-column:4;grid-row:3">&#8592;</div>
-            <div class="roadmap-item future" style="grid-column:3;grid-row:3">Multicomponent flow</div>
-            <div class="roadmap-arrow roadmap-arrow--faint" style="grid-column:2;grid-row:3">&#8592;</div>
-            <div class="roadmap-item horizon" style="grid-column:1;grid-row:3">
+            <!-- Main row 2 -->
+            <div class="roadmap-item future" style="grid-column:5;grid-row:5">Multiphase flow</div>
+            <div class="roadmap-arrow" style="grid-column:4;grid-row:5">&#8592;</div>
+            <div class="roadmap-item future" style="grid-column:3;grid-row:5">Multicomponent flow</div>
+            <div class="roadmap-arrow roadmap-arrow--faint" style="grid-column:2;grid-row:5">&#8592;</div>
+            <div class="roadmap-item horizon" style="grid-column:1;grid-row:5">
               <span class="roadmap-tag roadmap-tag--horizon">Long-term horizon</span>
               Transient simulation
             </div>
+
           </div>
         </section>
 

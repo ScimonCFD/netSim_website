@@ -381,28 +381,24 @@ a {
   text-transform: uppercase;
 }
 
-.fluid-diagram {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px 10px;
-  margin-top: 14px;
-  align-items: center;
-  justify-items: center;
+.sub-nodes-row {
+  display: flex;
+  gap: 8px;
+  justify-content: space-around;
 }
 
-.fluid-feed {
-  width: 100%;
+.sub-node {
+  flex: 1;
   padding: 5px 8px;
   border-radius: 6px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.06);
   color: rgba(244, 232, 207, 0.75);
-  box-sizing: border-box;
 }
 
-.fluid-feed.wip {
+.sub-node.wip {
   border-style: dashed;
   border-color: rgba(255, 200, 80, 0.45);
   background: rgba(255, 180, 0, 0.06);
@@ -410,25 +406,12 @@ a {
   font-style: italic;
 }
 
-.fluid-arrow-down {
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 0.85rem;
-}
-
-.fluid-target {
-  grid-column: 1 / 3;
-  width: 100%;
+.sub-arrows-row {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.11);
-  color: #f4e8cf;
-  font-size: 0.88rem;
-  font-weight: 600;
-  box-sizing: border-box;
+  justify-content: space-around;
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 0.85rem;
+  padding: 0 16px;
 }
 
 .section.compact {

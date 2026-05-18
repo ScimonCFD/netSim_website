@@ -112,7 +112,7 @@ a {
 
 .hero h1 {
   font-size: clamp(2.4rem, 5vw, 4.9rem);
-  max-width: 11ch;
+  max-width: 18ch;
 }
 
 .hero-text {
@@ -228,7 +228,7 @@ a {
 
 .section h2 {
   font-size: clamp(1.75rem, 3vw, 3rem);
-  max-width: 15ch;
+  max-width: 22ch;
 }
 
 .two-column {
@@ -505,6 +505,42 @@ a {
 
 .stat-divider { width: 1px; height: 30px; background: var(--line); flex-shrink: 0; }
 
+/* Value grid (Why section) */
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.value-card {
+  padding: 38px 36px;
+  background: rgba(255, 252, 245, 0.88);
+  transition: background 160ms ease;
+}
+
+.value-card:hover {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.value-card h3 {
+  margin: 0 0 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.value-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.62;
+}
+
 /* Capability grid */
 .cap-grid {
   display: grid;
@@ -581,7 +617,8 @@ a {
   .cards.four-up,
   .workflow-figure,
   .roadmap-grid,
-  .cap-grid {
+  .cap-grid,
+  .value-grid {
     grid-template-columns: 1fr;
   }
 

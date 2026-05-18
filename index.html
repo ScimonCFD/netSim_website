@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Angelica — Pipe Network Simulation</title>
+    <title>Angelica — Pipeline Network Simulation</title>
     <meta
       name="description"
-      content="Open-source steady-state pipe network simulator. Pipes, fittings, pumps, and a graphical interface. Validated against EPANET benchmarks."
+      content="Angelica is an open-source platform for pipeline network simulation. Validated solver, graphical interface, MIT licensed. Built to grow toward multiphase and compressible flow."
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="assets/logomark.svg" type="image/svg+xml" />
   </head>
   <body>
     <div class="page-shell">
+
       <header class="hero">
         <nav class="topbar">
           <div class="brand">
@@ -20,8 +21,8 @@
             Angelica
           </div>
           <div class="toplinks">
+            <a href="#why">Why Angelica</a>
             <a href="#capabilities">Capabilities</a>
-            <a href="#workflow">Workflow</a>
             <a href="#benchmarks">Benchmarks</a>
             <a href="methods.html">Methods</a>
             <a href="#roadmap">Roadmap</a>
@@ -31,12 +32,13 @@
 
         <div class="hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">Pipe-Network Simulation</p>
-            <h1>Pressures and flows for steady-state pipe networks.</h1>
+            <p class="eyebrow">Pipeline Simulation</p>
+            <h1>The open&#8209;source platform for pipeline network simulation.</h1>
             <p class="hero-text">
-              Angelica computes nodal pressures and component flow rates for
-              incompressible, isothermal networks with pipes, fittings, and
-              pumps. Built around the workflow engineers already know.
+              Angelica brings together a validated solver, an engineer&#8209;friendly
+              interface, and a clear roadmap toward non&#8209;isothermal, compressible,
+              and multiphase pipeline simulation. MIT licensed. No subscriptions.
+              No lock&#8209;in.
             </p>
 
             <div class="stat-row">
@@ -67,15 +69,15 @@
           <div class="hero-panel">
             <div class="slider" id="hero-slider">
               <div class="slide active">
-                <img src="assets/slide_pipe.svg" class="slide-img" />
+                <img src="assets/slide_pipe.svg" class="slide-img" alt="Pipe network tutorial" />
                 <p class="slide-caption">Tutorial 01 &mdash; Pipe network</p>
               </div>
               <div class="slide">
-                <img src="assets/slide_hanoi.svg" class="slide-img" />
+                <img src="assets/slide_hanoi.svg" class="slide-img" alt="Hanoi benchmark" />
                 <p class="slide-caption">Benchmark &mdash; Hanoi network (32 nodes)</p>
               </div>
               <div class="slide">
-                <img src="assets/slide_pump.svg" class="slide-img" />
+                <img src="assets/slide_pump.svg" class="slide-img" alt="EPANET pump benchmark" />
                 <p class="slide-caption">Benchmark &mdash; EPANET pump network</p>
               </div>
               <div class="slider-dots">
@@ -89,12 +91,54 @@
       </header>
 
       <main>
-        <section id="capabilities" class="section">
+
+        <!-- WHY ANGELICA -->
+        <section id="why" class="section">
+          <div class="section-head">
+            <p class="eyebrow">Why Angelica</p>
+            <h2>Built differently.</h2>
+          </div>
+          <div class="value-grid">
+
+            <div class="value-card">
+              <h3>Free. Permanently.</h3>
+              <p>MIT license. Use Angelica in commercial projects, academic research,
+                or internal tooling without fees, expiry dates, or usage limits.
+                The code is yours — read it, modify it, ship it.</p>
+            </div>
+
+            <div class="value-card">
+              <h3>Accuracy you can verify.</h3>
+              <p>Every result is benchmarked against published EPANET reference
+                solutions. The solver's performance is documented, reproducible,
+                and open to inspection — not a black box.</p>
+            </div>
+
+            <div class="value-card">
+              <h3>An architecture with a plan.</h3>
+              <p>The current incompressible solver is the first stage of a platform
+                designed to grow. Non&#8209;isothermal, compressible, and multiphase
+                pipeline simulation are all on the roadmap — not afterthoughts.</p>
+            </div>
+
+            <div class="value-card">
+              <h3>The workflow engineers already know.</h3>
+              <p>Define sources and sinks, connect them through junctions, assign
+                components, and run. No scripting, no configuration files, no
+                setup rituals. From network to results in minutes.</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- CAPABILITIES -->
+        <section id="capabilities" class="section accent">
           <div class="section-head">
             <p class="eyebrow">Capabilities</p>
-            <h2>Everything needed to simulate a pipe network.</h2>
+            <h2>A complete toolset for pipe network engineering.</h2>
           </div>
           <div class="cap-grid">
+
             <article class="cap-card">
               <div class="cap-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
@@ -102,7 +146,7 @@
                 </svg>
               </div>
               <h3>Pipes</h3>
-              <p>Darcy-Weisbach friction with Colebrook-White or Hazen-Williams closure. Arbitrary length, diameter, and wall roughness.</p>
+              <p>Darcy-Weisbach with Colebrook-White or Hazen-Williams closure. Arbitrary length, diameter, and wall roughness.</p>
             </article>
 
             <article class="cap-card">
@@ -113,7 +157,7 @@
                 </svg>
               </div>
               <h3>Fittings</h3>
-              <p>Local-loss accessories from a built-in library or a custom loss coefficient. Elbows, valves, tees, and any fitting with a known K.</p>
+              <p>Local-loss accessories from a built-in library or a custom K. Elbows, valves, tees, and any fitting with a known loss coefficient.</p>
             </article>
 
             <article class="cap-card">
@@ -124,7 +168,7 @@
                 </svg>
               </div>
               <h3>Pumps</h3>
-              <p>Single-point EPANET curve model and piecewise-linear multi-point curves. Flow computed directly from the required operating head.</p>
+              <p>Single-point EPANET model and piecewise-linear multi-point curves. Operating point computed directly from the required head.</p>
             </article>
 
             <article class="cap-card">
@@ -135,7 +179,7 @@
                 </svg>
               </div>
               <h3>Boundary conditions</h3>
-              <p>Pressure and mass-flow boundaries on any node. Mixed types — pressure sources, pressure sinks, flow inlets, flow outlets — on the same network.</p>
+              <p>Pressure and mass-flow boundaries on any node. Mixed types — sources, sinks, flow inlets, flow outlets — on the same network.</p>
             </article>
 
             <article class="cap-card">
@@ -157,15 +201,17 @@
                 </svg>
               </div>
               <h3>Open source</h3>
-              <p>MIT license. Full source on GitHub. No subscriptions, no license fees, no vendor lock-in. Use it, fork it, extend it.</p>
+              <p>Full source on GitHub under the MIT license. No subscriptions, no license fees, no vendor lock-in. Use it, fork it, extend it.</p>
             </article>
+
           </div>
         </section>
 
-        <section id="workflow" class="section accent">
+        <!-- WORKFLOW -->
+        <section id="workflow" class="section">
           <div class="section-head">
             <p class="eyebrow">Workflow</p>
-            <h2>GUI-first, from network to results.</h2>
+            <h2>From network to results in four steps.</h2>
           </div>
           <div class="steps">
             <article class="step">
@@ -181,40 +227,50 @@
             <article class="step">
               <span class="step-number">03</span>
               <h3>Configure the case</h3>
-              <p>Define the material, pressure-drop model, and numerical settings from the GUI.</p>
+              <p>Set the fluid properties, pressure-drop model, and solver parameters directly from the GUI.</p>
             </article>
             <article class="step">
               <span class="step-number">04</span>
               <h3>Run and export</h3>
-              <p>Run the solver, inspect convergence, review nodal pressures and link flows, and export the results to a spreadsheet.</p>
+              <p>Run the solver, inspect convergence, review nodal pressures and link flows, and export results to a spreadsheet.</p>
             </article>
           </div>
         </section>
 
-        <section id="benchmarks" class="section">
+        <!-- BENCHMARKS -->
+        <section id="benchmarks" class="section accent">
           <div class="section-head">
             <p class="eyebrow">Validation</p>
-            <h2>Benchmarked against published reference solutions.</h2>
+            <h2>Accuracy you can check.</h2>
           </div>
           <div class="cards">
             <article class="info-card">
               <h3>Hanoi benchmark</h3>
-              <p>32-junction, 34-pipe network solved with Darcy-Weisbach and the Colebrook-White equation. Nodal heads and link flows validated against the published EPANET reference solution.</p>
+              <p>32-junction, 34-pipe network solved with Darcy-Weisbach and
+                Colebrook-White. Nodal heads and link flows validated against
+                the published EPANET reference solution.</p>
             </article>
             <article class="info-card">
               <h3>EPANET pump benchmark</h3>
-              <p>Pump-bearing network adapted from the official EPANET tutorial. Pump operating point, nodal pressures, and link flows validated against the published reference.</p>
+              <p>Pump-bearing network adapted from the official EPANET tutorial.
+                Pump operating point, nodal pressures, and link flows validated
+                against the published reference.</p>
             </article>
             <article class="info-card">
               <h3>Tutorial suite</h3>
-              <p>Eight cases covering pipes, fittings, elevation changes, inlet-flow, outlet-flow, and combined boundaries — available for smoke testing and onboarding.</p>
+              <p>Eight cases covering pipes, fittings, elevation, inlet-flow,
+                outlet-flow, and combined boundaries — for smoke testing,
+                onboarding, and regression checks.</p>
             </article>
           </div>
           <div class="methods-callout">
-            <p>The pressure-correction algorithm, element laws, and solver strategy are documented in detail on the <a href="methods.html">methods page</a>.</p>
+            <p>The pressure-correction algorithm, element laws, and solver strategy
+              are fully documented on the
+              <a href="methods.html">methods page</a>.</p>
           </div>
         </section>
 
+        <!-- ROADMAP -->
         <section id="roadmap" class="section dark">
           <div class="section-head">
             <p class="eyebrow">Long-term objective</p>
@@ -247,6 +303,7 @@
 
           </div>
         </section>
+
       </main>
 
       <footer class="site-footer">
@@ -255,8 +312,8 @@
           <span>Angelica</span>
         </div>
         <nav class="footer-links">
+          <a href="#why">Why Angelica</a>
           <a href="#capabilities">Capabilities</a>
-          <a href="#workflow">Workflow</a>
           <a href="#benchmarks">Benchmarks</a>
           <a href="methods.html">Methods</a>
           <a href="https://github.com/ScimonCFD/Angelica" target="_blank" rel="noreferrer">GitHub</a>
@@ -267,6 +324,7 @@
           &nbsp;&middot;&nbsp; MIT License &nbsp;&middot;&nbsp; 2025
         </p>
       </footer>
+
     </div>
 
     <script>

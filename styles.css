@@ -89,7 +89,7 @@ a {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.3fr 0.8fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 34px;
   align-items: center;
 }
@@ -111,8 +111,8 @@ a {
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 5vw, 4.9rem);
-  max-width: 18ch;
+  font-size: clamp(1.8rem, 3.2vw, 3.4rem);
+  max-width: 26ch;
 }
 
 .hero-text {
@@ -283,7 +283,7 @@ a {
 }
 
 .methods-hero .hero-copy h1 {
-  max-width: 12ch;
+  max-width: none;
 }
 
 .workflow-figure {

@@ -219,7 +219,7 @@
         </section>
 
         <!-- BENCHMARKS -->
-        <section id="benchmarks" class="section accent">
+        <section id="benchmarks" class="section">
           <div class="section-head">
             <p class="eyebrow">Validation</p>
             <h2>Accuracy you can check.</h2>
@@ -349,7 +349,7 @@
       if ('IntersectionObserver' in window &&
           !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const revealTargets = document.querySelectorAll(
-          '.value-card, .cap-card, .step, .info-card, .roadmap-item, .section-head'
+          '.value-card, .cap-card, .info-card, .roadmap-item, .section-head'
         );
         const obs = new IntersectionObserver(
           entries => entries.forEach(e => {

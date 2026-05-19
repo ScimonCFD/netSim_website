@@ -640,20 +640,17 @@ a {
   flex-wrap: wrap;
 }
 
-.author-name {
-  margin: 0 0 6px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--ink);
-}
-
 .author-bio {
   margin: 0;
   color: var(--muted);
-  font-size: 0.97rem;
-  max-width: 52ch;
-  line-height: 1.6;
+  font-size: 1rem;
+  max-width: 54ch;
+  line-height: 1.65;
+}
+
+.author-bio a {
+  color: var(--brand-deep);
+  font-weight: 600;
 }
 
 .author-actions {

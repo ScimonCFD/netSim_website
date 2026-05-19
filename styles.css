@@ -64,15 +64,27 @@ a {
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.55rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+}
+
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: #070c17;
+  border-radius: 11px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(7, 12, 23, 0.28);
 }
 
 .brand-mark {
-  height: 36px;
+  height: 28px;
   width: auto;
 }
 
@@ -603,7 +615,7 @@ a {
   font-weight: 700;
 }
 
-.footer-mark { height: 26px; }
+.footer-mark { height: 22px; }
 .footer-links { display: flex; gap: 18px; flex-wrap: wrap; color: var(--muted); font-size: 0.88rem; }
 .footer-links a:hover { color: var(--brand-deep); }
 .footer-copy { margin: 0; font-size: 0.82rem; color: var(--muted); }

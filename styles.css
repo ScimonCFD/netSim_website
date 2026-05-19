@@ -635,16 +635,19 @@ a {
 .author-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 32px;
   flex-wrap: wrap;
+}
+
+.author-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .author-bio {
   margin: 0;
   color: var(--muted);
   font-size: 1rem;
-  max-width: 54ch;
   line-height: 1.65;
 }
 

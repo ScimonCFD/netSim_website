@@ -88,6 +88,13 @@ a {
   width: auto;
 }
 
+.brand-name {
+  background: linear-gradient(90deg, #3a9fd4 0%, #8aaab8 50%, #e8633a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .toplinks {
   display: flex;
   flex-wrap: wrap;

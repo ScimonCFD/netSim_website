@@ -623,6 +623,46 @@ a {
 .methods-callout a { color: var(--brand-deep); font-weight: 600; }
 .methods-callout a:hover { text-decoration: underline; }
 
+/* Author strip */
+.author-strip {
+  margin-top: 26px;
+  padding: 36px 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(12, 108, 107, 0.06), rgba(217, 143, 59, 0.06));
+}
+
+.author-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.author-name {
+  margin: 0 0 6px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.author-bio {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.97rem;
+  max-width: 52ch;
+  line-height: 1.6;
+}
+
+.author-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
 /* Footer */
 .site-footer {
   margin-top: 26px;

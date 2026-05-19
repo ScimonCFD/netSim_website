@@ -260,7 +260,6 @@ a {
 
 .section h2 {
   font-size: clamp(1.75rem, 3vw, 3rem);
-  max-width: 22ch;
 }
 
 .two-column {

@@ -65,10 +65,6 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
 }
 
 .brand-icon {
@@ -89,7 +85,11 @@ a {
 }
 
 .brand-name {
-  background: linear-gradient(90deg, #3a9fd4 0%, #8aaab8 50%, #e8633a 100%);
+  font-family: "Space Grotesk", "Inter", "Segoe UI", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #0ea5e9 0%, #f97316 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -617,9 +617,6 @@ a {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.1rem;
-  font-weight: 700;
 }
 
 .footer-mark { height: 22px; }

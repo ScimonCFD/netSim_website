@@ -84,6 +84,16 @@ a {
   width: auto;
 }
 
+.brand-icon--sm {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}
+
+.brand-name--sm {
+  font-size: 1.05rem;
+}
+
 .brand-lockup {
   display: block;
 }

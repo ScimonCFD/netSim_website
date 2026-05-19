@@ -3,24 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Angelica Methods</title>
+    <title>Angelica — Numerical Method</title>
     <meta
       name="description"
-      content="Numerical method overview for Angelica, including the pressure-correction workflow for laminar pipes, turbulent pipes, accessories, and pumps."
+      content="Modified SIMPLE algorithm for steady, incompressible, isothermal pipe network simulation. Governing equations, pressure-correction coefficients, and algorithm for pipes, fittings, and pumps."
     />
     <meta property="og:type"        content="website" />
     <meta property="og:title"       content="Angelica — Numerical Method" />
-    <meta property="og:description" content="Pressure-correction workflow for the Angelica pipeline solver. Laminar seed, nonlinear iteration, element laws for pipes, accessories, and pumps." />
+    <meta property="og:description" content="Modified SIMPLE pressure-correction algorithm for pipe networks. Element laws for laminar pipes, turbulent pipes, accessories, and pumps." />
     <meta property="og:url"         content="https://scimonCFD.github.io/Angelica_website/methods.html" />
     <meta name="twitter:card"       content="summary" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="assets/logomark.svg" type="image/svg+xml" />
   </head>
   <body>
     <div class="page-shell">
+
       <header class="hero compact-hero">
         <nav class="topbar">
           <a class="brand" href="index.html">
@@ -32,12 +34,11 @@
               <span class="brand-tagline">Fluid networks solved</span>
             </span>
           </a>
-          </div>
           <div class="toplinks">
             <a href="index.html">Home</a>
-            <a href="#workflow-map">Workflow</a>
+            <a href="#foundations">Foundations</a>
             <a href="#element-laws">Element laws</a>
-            <a href="#notes">Notes</a>
+            <a href="#algorithm">Algorithm</a>
           </div>
           <a class="button primary small" href="https://github.com/ScimonCFD/Angelica" target="_blank" rel="noreferrer">GitHub &rarr;</a>
         </nav>
@@ -45,26 +46,24 @@
         <div class="hero-grid methods-hero">
           <div class="hero-copy">
             <p class="eyebrow">Numerical Method</p>
-            <h1>Pressure-correction workflow for the steady, incompressible, isothermal solver.</h1>
+            <h1>Modified SIMPLE algorithm for steady, incompressible pipe networks.</h1>
             <p class="hero-text">
-              Angelica uses a pressure-correction strategy that first builds a
-              laminar solution and then uses that field as the initial condition
-              for the nonlinear solve. The local pressure-correction relation is
-              built differently for pipes, accessories, and pumps, but all of
-              them enter the same nodal continuity framework.
+              A pressure-correction strategy adapted from the SIMPLE method.
+              The solver first builds a laminar solution — which converges in a single
+              iteration for pure-pipe systems — then uses it as the initial condition
+              for the nonlinear solve with turbulent and accessory element laws.
             </p>
           </div>
 
           <div class="hero-panel">
             <div class="hero-card">
-              <div class="card-label">Solver family</div>
+              <div class="card-label">Solution sequence</div>
               <ul class="feature-list">
-                <li>Assume pressure field</li>
-                <li>Estimate link velocities</li>
-                <li>Assemble pressure correction</li>
-                <li>Correct pressures and flows</li>
-                <li>Converge laminar field</li>
-                <li>Use it to start nonlinear solve</li>
+                <li>Assume a pressure field <em>P*</em></li>
+                <li>Estimate velocities from element laws</li>
+                <li>Assemble nodal correction system</li>
+                <li>Solve for <em>P′</em> &rarr; update <em>P</em> and <em>V</em></li>
+                <li>Converge laminar &rarr; seed nonlinear</li>
               </ul>
             </div>
           </div>
@@ -72,117 +71,266 @@
       </header>
 
       <main>
-        <section id="workflow-map" class="section">
+
+        <!-- FOUNDATIONS -->
+        <section id="foundations" class="section">
           <div class="section-head">
-            <p class="eyebrow">Workflow</p>
-            <h2>High-level solution sequence.</h2>
+            <p class="eyebrow">Starting point</p>
+            <h2>Three equations govern the solver.</h2>
           </div>
+
+          <div class="method-block">
+            <h3>Energy equation — steady flow in a pipe</h3>
+            <p>Relates the pressure drop between two nodes to elevation and friction losses. This is the momentum equation the solver satisfies for each link.</p>
+            <div class="eq-display">
+              $$(P_{in} - P_{out}) = \rho g\,(z_{out} - z_{in}) + f\,\frac{l}{D}\,\frac{\rho V^2}{2}$$
+            </div>
+            <p class="var-list">
+              $D$ — internal diameter &nbsp;&middot;&nbsp;
+              $l$ — pipe length &nbsp;&middot;&nbsp;
+              $f$ — friction factor &nbsp;&middot;&nbsp;
+              $\rho$ — fluid density &nbsp;&middot;&nbsp;
+              $z$ — elevation &nbsp;&middot;&nbsp;
+              $V$ — mean velocity
+            </p>
+            <p>In laminar flow $\,f = 64/Re\,$ where $Re = \rho V D / \mu$, reducing the energy equation to the linear Poiseuille relation. In turbulent flow, $f$ is given by Colebrook-White.</p>
+          </div>
+
+          <div class="method-block">
+            <h3>Colebrook-White — turbulent friction factor</h3>
+            <p>An implicit equation for $f$ given the Reynolds number and wall roughness. It is solved iteratively (or via an explicit approximation) at each iteration of the nonlinear stage.</p>
+            <div class="eq-display">
+              $$\frac{1}{\sqrt{f}} = -2\log\!\left(\frac{\varepsilon/D}{3.7} + \frac{2.51}{Re\sqrt{f}}\right)$$
+            </div>
+            <p class="var-list">$\varepsilon$ — absolute wall roughness</p>
+          </div>
+
+          <div class="method-block">
+            <h3>Nodal continuity</h3>
+            <p>Mass is conserved at every junction. The pressure-correction step is derived from this equation — its residual $b_C$ drives the iteration.</p>
+            <div class="eq-display">
+              $$\sum_{in}\dot{m}_{in} \;=\; \sum_{out}\dot{m}_{out}$$
+            </div>
+          </div>
+
+          <div class="method-block" id="simple-decomposition">
+            <h3>The SIMPLE decomposition</h3>
+            <p>
+              The solver assumes an initial pressure field $P^*$ and estimates velocities $V^*$.
+              The true solution is related to the estimate by corrections $P'$ and $V'$:
+            </p>
+            <div class="eq-display">
+              $$P = P^* + P', \qquad V = V^* + V'$$
+            </div>
+            <p>
+              Substituting into the continuity equation and rearranging produces a linear system
+              in $P'$. The central challenge — and what distinguishes element types — is writing
+              $V'$ as a function of $P'$. For laminar flow this relation is <em>exact</em>.
+              For nonlinear elements it requires an approximation.
+            </p>
+          </div>
+        </section>
+
+        <!-- ELEMENT LAWS -->
+        <section id="element-laws" class="section accent">
+          <div class="section-head">
+            <p class="eyebrow">Pressure-correction coefficients</p>
+            <h2>How each element enters the nodal system.</h2>
+          </div>
+
+          <p class="section-intro">
+            Every element contributes a coefficient $a_f$ to the pressure-correction equation of each node it connects.
+            The nodal system always takes the same form regardless of element type:
+          </p>
+          <div class="eq-display eq-central">
+            $$a_C\,P'_C \;+\; \sum_f a_f\,P'_F \;=\; b_C$$
+          </div>
+          <p class="section-intro">
+            where $\;a_C = -\displaystyle\sum_f a_f\;$ and $\;b_C = \displaystyle\sum_{in}\dot{m}^*_f - \sum_{out}\dot{m}^*_f$.
+            What changes between element types is the expression for $a_f$.
+          </p>
+
+          <div class="method-block" id="laminar-pipe">
+            <h3>Laminar pipe</h3>
+            <p>
+              The Poiseuille equation is linear in pressure, so the velocity correction $V'$
+              can be expressed exactly in terms of $P'$. The coefficient $c$ is constant for each pipe:
+            </p>
+            <div class="eq-display">
+              $$c = \frac{\rho A D^2}{32\,\mu\,l} \qquad \Longrightarrow \qquad a_f = -c_f$$
+            </div>
+            <p>
+              Because $a_f$ is constant, the pressure-correction system is linear and a network
+              of purely laminar pipes converges in a single iteration. This is why the laminar
+              stage is used to generate the initial condition for the nonlinear solve.
+            </p>
+          </div>
+
+          <div class="method-block" id="turbulent-pipe">
+            <h3>Turbulent pipe</h3>
+            <p>
+              The turbulent momentum equation is nonlinear in $V$, so an exact $V'(P')$
+              relation does not exist. Using the approximation $V \approx V^*$
+              — which holds exactly at convergence — gives:
+            </p>
+            <div class="eq-display">
+              $$V' = \frac{2D}{\rho\,l}\cdot\frac{P'_{in} - P'_{out}}{f_{V^*}|V^*|}$$
+            </div>
+            <p>Substituting into the continuity equation yields the coefficient:</p>
+            <div class="eq-display">
+              $$a_f = -\!\left(\frac{2AD}{l\,f_{V^*}|V^*|}\right)_{\!f}$$
+            </div>
+            <p>
+              $f_{V^*}$ is the friction factor at the current velocity estimate, updated every
+              iteration via Colebrook-White. As $V^* \to V$, $f_{V^*} \to f$ and the
+              approximation becomes exact.
+            </p>
+          </div>
+
+          <div class="method-block" id="accessory">
+            <h3>Fitting (accessory)</h3>
+            <p>
+              The pressure drop across a fitting is quadratic in velocity, governed by a
+              loss coefficient $K_L$. Applying the same approximation as the turbulent case:
+            </p>
+            <div class="eq-display">
+              $$\Delta P = K_L\,\frac{\rho V^2}{2} \qquad \Longrightarrow \qquad a_f = -\!\left(\frac{2A}{K_L|V^*|}\right)_{\!f}$$
+            </div>
+            <p>
+              $K_L$ values for elbows, valves, tees, and other standard fittings are available
+              in the built-in library or can be entered as a custom coefficient.
+            </p>
+          </div>
+
+          <div class="method-block" id="boundary-conditions">
+            <h3>Boundary conditions</h3>
+            <div class="bc-grid">
+              <article class="info-card">
+                <h3>Known pressure</h3>
+                <p>Set $P' = 0$ at the boundary node. The correction is zero by definition — the prescribed pressure is already exact.</p>
+              </article>
+              <article class="info-card">
+                <h3>Known mass flow</h3>
+                <p>The boundary flow is imposed directly. The $P'$ term for that node does not appear in the algebraic system — it is absorbed into $b_C$ of the connected interior nodes.</p>
+              </article>
+            </div>
+            <p class="bc-note">
+              At least one pressure boundary is required for a unique solution.
+              Mixed types — pressure sources, pressure sinks, flow inlets, flow outlets — can coexist in the same network.
+            </p>
+          </div>
+        </section>
+
+        <!-- ALGORITHM -->
+        <section id="algorithm" class="section dark">
+          <div class="section-head">
+            <p class="eyebrow">The algorithm</p>
+            <h2>Modified SIMPLE — laminar seed, nonlinear solve.</h2>
+          </div>
+          <p class="section-intro section-intro--dark">
+            The SIMPLE loop runs in two stages. The first assumes laminar flow everywhere and
+            converges rapidly. The converged laminar field seeds the second stage, which applies
+            the correct nonlinear element laws — significantly reducing the iterations required.
+          </p>
 
           <div class="workflow-figure">
             <div class="workflow-column">
-              <div class="workflow-label">Laminar stage</div>
-              <div class="workflow-box">Assume an initial pressure field <code>p*</code></div>
-              <div class="workflow-arrow">↓</div>
-              <div class="workflow-box">Estimate link velocities using the laminar element equations</div>
-              <div class="workflow-arrow">↓</div>
-              <div class="workflow-box">Update mass flows with <code>m = ρ A v</code></div>
-              <div class="workflow-arrow">↓</div>
+              <div class="workflow-label">Stage 1 &mdash; Laminar</div>
+
               <div class="workflow-box">
-                Assemble the pressure-correction system
-                <span class="workflow-note">Laminar pipe coefficients from the linear pressure-flow relation</span>
+                Assume an initial pressure field $P^*$
               </div>
               <div class="workflow-arrow">↓</div>
-              <div class="workflow-box">Solve pressure correction and update pressure and velocity</div>
+
+              <div class="workflow-box">
+                Estimate link velocities $V^*$ from the laminar momentum equation
+                <span class="workflow-note">
+                  Pipe: <a href="#laminar-pipe" class="eq-ref">Poiseuille</a>
+                  &nbsp;&middot;&nbsp;
+                  Accessory: <a href="#accessory" class="eq-ref">K<sub>L</sub> law</a>
+                </span>
+              </div>
               <div class="workflow-arrow">↓</div>
-              <div class="workflow-box">Repeat until laminar convergence</div>
+
+              <div class="workflow-box">
+                Update mass flows &ensp; $\dot{m} = \rho V^* A$
+              </div>
+              <div class="workflow-arrow">↓</div>
+
+              <div class="workflow-box">
+                Assemble the pressure-correction system
+                <span class="workflow-note">
+                  Element coefficient: <a href="#laminar-pipe" class="eq-ref">laminar $c$</a>
+                  &nbsp;&middot;&nbsp;
+                  Boundary conditions: <a href="#boundary-conditions" class="eq-ref">BC rules</a>
+                </span>
+              </div>
+              <div class="workflow-arrow">↓</div>
+
+              <div class="workflow-box">
+                Solve for $P'$ &ensp;&middot;&ensp; update $P = P^* + P'$, &ensp;$V = V^* + V'$
+                <span class="workflow-note">
+                  <a href="#simple-decomposition" class="eq-ref">SIMPLE decomposition</a>
+                </span>
+              </div>
+              <div class="workflow-arrow">↓</div>
+
+              <div class="workflow-box">
+                Converged? &ensp;&rarr;&ensp; proceed to Stage 2
+                <span class="workflow-note">Pure-pipe systems converge in one iteration</span>
+              </div>
             </div>
 
             <div class="workflow-divider"></div>
 
             <div class="workflow-column">
-              <div class="workflow-label">Nonlinear stage</div>
-              <div class="workflow-box">Use the converged laminar field as the initial condition</div>
-              <div class="workflow-arrow">↓</div>
+              <div class="workflow-label">Stage 2 &mdash; Nonlinear</div>
+
               <div class="workflow-box">
-                Recompute link velocities with the nonlinear element laws
-                <span class="workflow-note">Turbulent pipes, accessories, and pumps</span>
+                Use the converged laminar field as initial $P^*$, $V^*$
               </div>
               <div class="workflow-arrow">↓</div>
-              <div class="workflow-box">Update mass flows</div>
-              <div class="workflow-arrow">↓</div>
+
               <div class="workflow-box">
-                Assemble the nonlinear pressure-correction system
-                <span class="workflow-note">Each element contributes its own local pressure-correction coefficient</span>
+                Recompute $V^*$ with the nonlinear element laws
+                <span class="workflow-note">
+                  Turbulent pipe: <a href="#turbulent-pipe" class="eq-ref">Darcy-Weisbach + Colebrook</a>
+                  &nbsp;&middot;&nbsp;
+                  Accessory: <a href="#accessory" class="eq-ref">K<sub>L</sub> law</a>
+                </span>
               </div>
               <div class="workflow-arrow">↓</div>
-              <div class="workflow-box">Solve, correct, and iterate</div>
+
+              <div class="workflow-box">
+                Update mass flows &ensp; $\dot{m} = \rho V^* A$
+              </div>
               <div class="workflow-arrow">↓</div>
-              <div class="workflow-box">Stop when the field converges</div>
+
+              <div class="workflow-box">
+                Assemble with nonlinear coefficients
+                <span class="workflow-note">
+                  <a href="#turbulent-pipe" class="eq-ref">turbulent $a_f$</a>
+                  &nbsp;&middot;&nbsp;
+                  <a href="#accessory" class="eq-ref">accessory $a_f$</a>
+                  &nbsp;&middot;&nbsp;
+                  <a href="#boundary-conditions" class="eq-ref">BC rules</a>
+                </span>
+              </div>
+              <div class="workflow-arrow">↓</div>
+
+              <div class="workflow-box">
+                Solve for $P'$ &ensp;&middot;&ensp; update $P$ and $V$
+              </div>
+              <div class="workflow-arrow">↓</div>
+
+              <div class="workflow-box">
+                Converged? &ensp;&rarr;&ensp; solution complete
+                <span class="workflow-note">Convergence criterion: nodal mass imbalance $b_C \to 0$</span>
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="element-laws" class="section accent">
-          <div class="section-head">
-            <p class="eyebrow">Element laws</p>
-            <h2>How each component enters the correction equation.</h2>
-          </div>
-
-          <div class="cards four-up">
-            <article class="info-card">
-              <h3>Laminar pipes</h3>
-              <p>
-                In laminar flow, the pressure-flow relation is linear. That
-                makes it possible to generate an exact local pressure-correction
-                relation for the pipe.
-              </p>
-            </article>
-            <article class="info-card">
-              <h3>Turbulent pipes</h3>
-              <p>
-                In turbulent flow, the pressure-flow relation is nonlinear, so
-                the local pressure-correction relation is constructed from the
-                current state and updated during the iteration process.
-              </p>
-            </article>
-            <article class="info-card">
-              <h3>Accessories</h3>
-              <p>
-                Accessories are treated through local-loss relations. Their own
-                pressure-flow expression produces the local coefficient used in
-                the system assembly.
-              </p>
-            </article>
-            <article class="info-card">
-              <h3>Pumps</h3>
-              <p>
-                Pumps are treated as pressure-changing devices. The assumed
-                pressure difference implies a required head, the pump curve gives
-                the corresponding flow, and the local derivative supplies the
-                correction coupling.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section id="notes" class="section dark">
-          <div class="section-head">
-            <p class="eyebrow">Interpretation</p>
-            <h2>One continuity framework, different local laws.</h2>
-          </div>
-          <div class="two-column">
-            <p>
-              The key idea is that the global nodal system always comes from
-              continuity. What changes from one link type to another is the way
-              the local pressure-correction contribution is generated.
-            </p>
-            <p>
-              In practice, pipes, accessories, and pumps all enter the same
-              assembly process once their local relation between pressure
-              difference and flow has been linearized around the current state.
-            </p>
-          </div>
-        </section>
       </main>
 
       <footer class="site-footer">
@@ -193,37 +341,46 @@
           <span class="brand-name brand-name--sm">Angelica</span>
         </div>
         <nav class="footer-links">
-          <a href="index.html#capabilities">Capabilities</a>
-          <a href="index.html#workflow">Workflow</a>
-          <a href="index.html#benchmarks">Benchmarks</a>
-          <a href="methods.html">Methods</a>
+          <a href="index.html">Home</a>
+          <a href="#foundations">Foundations</a>
+          <a href="#element-laws">Element laws</a>
+          <a href="#algorithm">Algorithm</a>
           <a href="https://github.com/ScimonCFD/Angelica" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://www.linkedin.com/in/simonrodriguezl" target="_blank" rel="noreferrer">LinkedIn</a>
         </nav>
-        <p class="footer-copy">
-          Created by <a href="https://www.linkedin.com/in/simonrodriguezl" target="_blank" rel="noreferrer">Simon Rodriguez</a>
-          &nbsp;&middot;&nbsp; MIT License &nbsp;&middot;&nbsp; 2025
-        </p>
+        <p class="footer-copy">MIT License &nbsp;&middot;&nbsp; 2025</p>
       </footer>
+
     </div>
-  <script>
-    if ('IntersectionObserver' in window &&
-        !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const revealTargets = document.querySelectorAll(
-        '.info-card, .workflow-box, .section-head'
-      );
-      const obs = new IntersectionObserver(
-        entries => entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); }
-        }),
-        { threshold: 0.1 }
-      );
-      revealTargets.forEach((el, i) => {
-        el.classList.add('reveal');
-        el.style.transitionDelay = (i % 4) * 60 + 'ms';
-        obs.observe(el);
-      });
-    }
-  </script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      onload="renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$',  right: '$',  display: false}
+        ],
+        throwOnError: false
+      });"></script>
+
+    <script>
+      if ('IntersectionObserver' in window &&
+          !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const revealTargets = document.querySelectorAll(
+          '.info-card, .workflow-box, .section-head, .method-block'
+        );
+        const obs = new IntersectionObserver(
+          entries => entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); }
+          }),
+          { threshold: 0.1 }
+        );
+        revealTargets.forEach((el, i) => {
+          el.classList.add('reveal');
+          el.style.transitionDelay = (i % 4) * 60 + 'ms';
+          obs.observe(el);
+        });
+      }
+    </script>
   </body>
 </html>

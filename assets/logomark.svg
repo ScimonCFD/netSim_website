@@ -23,20 +23,20 @@
   </defs>
 
   <!-- Edges -->
-  <line x1="90"  y1="375" x2="155" y2="220" stroke="url(#g-s-jl)"  stroke-width="7" stroke-linecap="round"/>
-  <line x1="155" y1="220" x2="250" y2="75"  stroke="url(#g-jl-kt)" stroke-width="7" stroke-linecap="round"/>
-  <line x1="345" y1="220" x2="250" y2="75"  stroke="url(#g-jr-kt)" stroke-width="7" stroke-linecap="round"/>
-  <line x1="155" y1="220" x2="345" y2="220" stroke="url(#g-jl-jr)" stroke-width="7" stroke-linecap="round"/>
-  <line x1="345" y1="220" x2="410" y2="375" stroke="url(#g-jr-kb)" stroke-width="7" stroke-linecap="round"/>
+  <line x1="90"  y1="375" x2="155" y2="220" stroke="url(#g-s-jl)"  stroke-width="22" stroke-linecap="round"/>
+  <line x1="155" y1="220" x2="250" y2="75"  stroke="url(#g-jl-kt)" stroke-width="22" stroke-linecap="round"/>
+  <line x1="345" y1="220" x2="250" y2="75"  stroke="url(#g-jr-kt)" stroke-width="22" stroke-linecap="round"/>
+  <line x1="155" y1="220" x2="345" y2="220" stroke="url(#g-jl-jr)" stroke-width="22" stroke-linecap="round"/>
+  <line x1="345" y1="220" x2="410" y2="375" stroke="url(#g-jr-kb)" stroke-width="22" stroke-linecap="round"/>
 
   <!-- Junction nodes -->
-  <circle cx="155" cy="220" r="27" fill="white" stroke="#4a6a7a" stroke-width="5"/>
-  <circle cx="345" cy="220" r="27" fill="white" stroke="#4a6a7a" stroke-width="5"/>
+  <circle cx="155" cy="220" r="32" fill="white" stroke="#4a6a7a" stroke-width="14"/>
+  <circle cx="345" cy="220" r="32" fill="white" stroke="#4a6a7a" stroke-width="14"/>
 
   <!-- Sink nodes -->
-  <circle cx="250" cy="75"  r="27" fill="white" stroke="#e8633a" stroke-width="5"/>
-  <circle cx="410" cy="375" r="27" fill="white" stroke="#e8633a" stroke-width="5"/>
+  <circle cx="250" cy="75"  r="32" fill="white" stroke="#e8633a" stroke-width="14"/>
+  <circle cx="410" cy="375" r="32" fill="white" stroke="#e8633a" stroke-width="14"/>
 
   <!-- Source node -->
-  <circle cx="90"  cy="375" r="27" fill="white" stroke="#3a9fd4" stroke-width="5"/>
+  <circle cx="90"  cy="375" r="32" fill="white" stroke="#3a9fd4" stroke-width="14"/>
 </svg>

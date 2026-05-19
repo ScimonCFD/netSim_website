@@ -84,12 +84,28 @@ a {
   width: auto;
 }
 
+.brand-lockup {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
 .brand-name {
   font-family: "Space Grotesk", "Inter", "Segoe UI", sans-serif;
   font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
+  line-height: 1;
+}
+
+.brand-tagline {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1;
 }
 
 .toplinks {

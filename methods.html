@@ -43,29 +43,21 @@
           <a class="button primary small" href="https://github.com/ScimonCFD/Angelica" target="_blank" rel="noreferrer">GitHub &rarr;</a>
         </nav>
 
-        <div class="hero-grid methods-hero">
-          <div class="hero-copy">
-            <p class="eyebrow">Numerical Method</p>
-            <h1>Modified SIMPLE algorithm for steady, incompressible pipe networks.</h1>
-            <p class="hero-text">
-              A pressure-correction strategy adapted from the SIMPLE method.
-              The solver first builds a laminar solution — which converges in a single
-              iteration for pure-pipe systems — then uses it as the initial condition
-              for the nonlinear solve with turbulent and accessory element laws.
-            </p>
-          </div>
-
-          <div class="hero-panel">
-            <div class="hero-card">
-              <div class="card-label">Solution sequence</div>
-              <ul class="feature-list">
-                <li>Assume a pressure field <em>P*</em></li>
-                <li>Estimate velocities from element laws</li>
-                <li>Assemble nodal correction system</li>
-                <li>Solve for <em>P′</em> &rarr; update <em>P</em> and <em>V</em></li>
-                <li>Converge laminar &rarr; seed nonlinear</li>
-              </ul>
-            </div>
+        <div class="methods-hero-body">
+          <p class="eyebrow">Numerical Method</p>
+          <h1>Modified SIMPLE algorithm for pipe network simulation.</h1>
+          <p class="hero-text">
+            A pressure-correction strategy adapted from SIMPLE. The solver builds an
+            exact laminar solution — converging in a single iteration for pure-pipe
+            networks — then uses it to seed the nonlinear turbulent and accessory solve.
+          </p>
+          <div class="method-tags">
+            <span class="method-tag">Steady</span>
+            <span class="method-tag">Incompressible</span>
+            <span class="method-tag">Isothermal</span>
+            <span class="method-tag">Darcy&#8209;Weisbach</span>
+            <span class="method-tag">Colebrook&#8209;White</span>
+            <span class="method-tag">Pressure&#8209;correction</span>
           </div>
         </div>
       </header>

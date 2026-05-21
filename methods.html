@@ -23,7 +23,7 @@
   <body>
     <div class="page-shell">
 
-      <header class="hero compact-hero">
+      <header class="hero compact-hero methods-dark">
         <nav class="topbar">
           <a class="brand" href="index.html">
             <span class="brand-icon">
@@ -46,19 +46,14 @@
         <div class="methods-hero-body">
           <p class="eyebrow">Numerical Method</p>
           <h1>Modified SIMPLE algorithm for pipe network simulation.</h1>
-          <p class="hero-text">
-            A pressure-correction strategy adapted from SIMPLE. The solver builds an
-            exact laminar solution — converging in a single iteration for pure-pipe
-            networks — then uses it to seed the nonlinear turbulent and accessory solve.
-          </p>
-          <div class="method-tags">
-            <span class="method-tag">Steady</span>
-            <span class="method-tag">Incompressible</span>
-            <span class="method-tag">Isothermal</span>
-            <span class="method-tag">Darcy&#8209;Weisbach</span>
-            <span class="method-tag">Colebrook&#8209;White</span>
-            <span class="method-tag">Pressure&#8209;correction</span>
+          <div class="methods-hero-eq">
+            $$a_C\,P'_C \;+\; \sum_f a_f\,P'_F \;=\; b_C$$
           </div>
+          <p class="hero-text">
+            Pressure-correction adapted from SIMPLE. Builds an exact laminar seed,
+            then uses it to initialize the nonlinear solve for turbulent pipes,
+            fittings, and pumps.
+          </p>
         </div>
       </header>
 

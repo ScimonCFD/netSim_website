@@ -835,31 +835,53 @@ a {
 }
 
 /* ── Methods page hero ── */
+.hero.methods-dark {
+  color: #f6f1e7;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(217, 143, 59, 0.22), transparent 38%),
+    linear-gradient(145deg, #163441 0%, #0e1e27 100%);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.hero.methods-dark .eyebrow {
+  color: var(--accent);
+}
+
+.hero.methods-dark .toplinks {
+  color: rgba(246, 241, 231, 0.6);
+}
+
+.hero.methods-dark .toplinks a:hover {
+  color: #f6f1e7;
+}
+
+.hero.methods-dark .hero-text {
+  color: rgba(246, 241, 231, 0.68);
+}
+
+.hero.methods-dark .brand-name {
+  color: #f6f1e7;
+}
+
+.hero.methods-dark .brand-tagline {
+  color: rgba(246, 241, 231, 0.5);
+}
+
 .methods-hero-body {
-  max-width: 800px;
+  max-width: 660px;
   padding: 8px 0 16px;
 }
 
-.methods-hero-body h1 {
-  max-width: 26ch;
-}
-
-.method-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 22px;
-}
-
-.method-tag {
-  padding: 5px 14px;
-  border: 1px solid rgba(12, 108, 107, 0.24);
-  border-radius: 999px;
-  background: rgba(12, 108, 107, 0.06);
-  color: var(--brand);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+.methods-hero-eq {
+  margin: 26px 0 22px;
+  padding: 20px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+  color: #f6f1e7;
+  max-width: 480px;
+  overflow-x: auto;
 }
 
 /* ── Methods page ── */

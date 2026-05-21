@@ -872,6 +872,38 @@ a {
   padding: 8px 0 16px;
 }
 
+.algo-figure {
+  margin: 28px 0 0;
+  text-align: center;
+}
+
+.algo-flowchart {
+  display: block;
+  margin: 0 auto;
+  max-width: 420px;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+.algo-figure figcaption {
+  display: inline-block;
+  margin-top: 18px;
+  max-width: 58ch;
+  text-align: left;
+  color: rgba(246, 241, 231, 0.62);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.algo-figure figcaption .eq-ref {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(246, 241, 231, 0.85);
+}
+
+.algo-figure figcaption .eq-ref:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
 .methods-hero-eq {
   margin: 26px 0 22px;
   padding: 20px 32px;

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 720">
+  <defs>
+    <style>text { font-family: 'Avenir Next','Segoe UI','Helvetica Neue',Arial,sans-serif; }</style>
+    <marker id="ah" markerWidth="9" markerHeight="6" refX="9" refY="3" orient="auto">
+      <polygon points="0 0,9 3,0 6" fill="#1d2a34"/>
+    </marker>
+    <marker id="ahm" markerWidth="9" markerHeight="6" refX="9" refY="3" orient="auto">
+      <polygon points="0 0,9 3,0 6" fill="#5b6974"/>
+    </marker>
+  </defs>
+
+  <!-- ── START ── -->
+  <ellipse cx="250" cy="36" rx="110" ry="26" fill="#0c6c6b"/>
+  <text x="250" y="42" text-anchor="middle" fill="white" font-size="14" font-weight="700">Start</text>
+
+  <line x1="250" y1="62" x2="250" y2="79" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
+
+  <!-- ── INITIALIZE ── -->
+  <rect x="75" y="81" width="350" height="50" rx="10" fill="#edf7f7" stroke="#0c6c6b" stroke-width="2"/>
+  <text x="250" y="104" text-anchor="middle" fill="#094a5c" font-size="13" font-weight="700">Initialize — laminar seed</text>
+  <text x="250" y="122" text-anchor="middle" fill="#5b6974" font-size="12">Assume P* = 0 · Exact for pure-pipe networks</text>
+
+  <line x1="250" y1="131" x2="250" y2="149" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
+
+  <!-- ── STAGE 1 ── -->
+  <rect x="75" y="151" width="350" height="30" rx="6" fill="#0c6c6b"/>
+  <text x="250" y="171" text-anchor="middle" fill="white" font-size="12" font-weight="700">STAGE 1 — LAMINAR</text>
+
+  <line x1="250" y1="181" x2="250" y2="197" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
+
+  <!-- BOX 1A -->
+  <rect x="75" y="199" width="350" height="50" rx="10" fill="white" stroke="#c5d2d8" stroke-width="1.5"/>
+  <text x="250" y="222" text-anchor="middle" fill="#1d2a34" font-size="13" font-weight="700">Estimate V* — laminar element laws</text>
+  <text x="250" y="240" text-anchor="middle" fill="#5b6974" font-size="12">Pipes (Poiseuille) · Accessories (KL law)</text>
+
+  <line x1="250" y1="249" x2="250" y2="265" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
+
+  <!-- BOX 1B -->
+  <rect x="75" y="267" width="350" height="44" rx="10" fill="white" stroke="#c5d2d8" stroke-width="1.5"/>
+  <text x="250" y="294" text-anchor="middle" fill="#1d2a34" font-size="13" font-weight="700">Compute mass-flux residual bC at each node</text>
+
+  <line x1="250" y1="311" x2="250" y2="327" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
+
+  <!-- BOX 1C -->
+  <rect x="75" y="329" width="350" height="50" rx="10" fill="white" stroke="#c5d2d8" stroke-width="1.5"/>
+  <text x="250" y="352" text-anchor="middle" fill="#1d2a34" font-size="13" font-weight="700">Solve for P′ · Update P and V</text>
+  <text x="250" y="370" text-anchor="middle" fill="#5b6974" font-size="12">P = P* + P′  ·  V = V* + V′</text>
+
+  <!-- Loop-back 1 — Not converged -->
+  <path d="M 425,354 L 460,354 L 460,224 L 425,224" fill="none" stroke="#5b6974" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#ahm)"/>
+  <text x="464" y="292" fill="#5b6974" font-size="11" font-weight="600">No</text>
+
+  <!-- Yes → Stage 2 -->
+  <line x1="250" y1="379" x2="250" y2="401" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="257" y="393" fill="#5b6974" font-size="11" font-weight="600">Yes</text>
+
+  <!-- ── STAGE 2 ── -->
+  <rect x="75" y="403" width="350" height="30" rx="6" fill="#094a5c"/>
+  <text x="250" y="423" text-anchor="middle" fill="white" font-size="12" font-weight="700">STAGE 2 — NONLINEAR</text>
+
+  <line x1="250" y1="433" x2="250" y2="449" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
+
+  <!-- BOX 2A -->
+  <rect x="75" y="451" width="350" height="50" rx="10" fill="white" stroke="#c5d2d8" stroke-width="1.5"/>
+  <text x="250" y="474" text-anchor="middle" fill="#1d2a34" font-size="13" font-weight="700">Estimate V* — nonlinear element laws</text>
+  <text x="250" y="492" text-anchor="middle" fill="#5b6974" font-size="12">Darcy-Weisbach + Colebrook-White · Pumps</text>
+
+  <line x1="250" y1="501" x2="250" y2="517" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
+
+  <!-- BOX 2B -->
+  <rect x="75" y="519" width="350" height="44" rx="10" fill="white" stroke="#c5d2d8" stroke-width="1.5"/>
+  <text x="250" y="546" text-anchor="middle" fill="#1d2a34" font-size="13" font-weight="700">Compute mass-flux residual bC at each node</text>
+
+  <line x1="250" y1="563" x2="250" y2="579" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
+
+  <!-- BOX 2C -->
+  <rect x="75" y="581" width="350" height="50" rx="10" fill="white" stroke="#c5d2d8" stroke-width="1.5"/>
+  <text x="250" y="604" text-anchor="middle" fill="#1d2a34" font-size="13" font-weight="700">Solve for P′ · Update P and V</text>
+  <text x="250" y="622" text-anchor="middle" fill="#5b6974" font-size="12">P = P* + P′  ·  V = V* + V′</text>
+
+  <!-- Loop-back 2 — Not converged -->
+  <path d="M 425,606 L 460,606 L 460,476 L 425,476" fill="none" stroke="#5b6974" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#ahm)"/>
+  <text x="464" y="544" fill="#5b6974" font-size="11" font-weight="600">No</text>
+
+  <!-- Yes → Output -->
+  <line x1="250" y1="631" x2="250" y2="655" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="257" y="647" fill="#5b6974" font-size="11" font-weight="600">Yes</text>
+
+  <!-- ── OUTPUT ── -->
+  <ellipse cx="250" cy="681" rx="110" ry="26" fill="#0c6c6b"/>
+  <text x="250" y="687" text-anchor="middle" fill="white" font-size="14" font-weight="700">Output — P, V, ṁ</text>
+</svg>

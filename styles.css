@@ -868,8 +868,16 @@ a {
 }
 
 .methods-hero-body {
-  max-width: 660px;
+  max-width: none;
   padding: 8px 0 16px;
+}
+
+.hero.methods-dark h1 {
+  max-width: 22ch;
+}
+
+.hero.methods-dark .hero-text {
+  max-width: 80ch;
 }
 
 .algo-figure {

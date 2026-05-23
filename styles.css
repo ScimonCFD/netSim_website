@@ -867,17 +867,41 @@ a {
   color: rgba(246, 241, 231, 0.5);
 }
 
-.methods-hero-body {
-  max-width: none;
-  padding: 8px 0 16px;
+.methods-summary-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 24px;
 }
 
-.hero.methods-dark h1 {
-  max-width: 22ch;
+.summary-stage-tag {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
-.hero.methods-dark .hero-text {
-  max-width: 80ch;
+.summary-stage p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(246, 241, 231, 0.7);
+  line-height: 1.55;
+}
+
+.summary-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 16px 0;
+}
+
+.summary-convergence {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(246, 241, 231, 0.5);
+  font-style: italic;
 }
 
 .algo-figure {

@@ -43,17 +43,35 @@
           <a class="button primary small" href="https://github.com/ScimonCFD/Angelica" target="_blank" rel="noreferrer">GitHub &rarr;</a>
         </nav>
 
-        <div class="methods-hero-body">
-          <p class="eyebrow">Numerical Method</p>
-          <h1>The hydraulic loop at the core of Angelica.</h1>
-          <p class="hero-text">
-            Angelica solves pipe networks by finding the pressure at every node and the
-            flow rate through every link — simultaneously satisfying the energy equation
-            along each pipe and mass conservation at every junction.
-            The solver is built around a modified SIMPLE pressure-correction algorithm
-            (Patankar, 1980) adapted for the topology of pipe and accessory networks.
-            This page documents the governing equations, element laws, and solution algorithm.
-          </p>
+        <div class="hero-grid methods-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Numerical Method</p>
+            <h1>The hydraulic loop at the core of Angelica.</h1>
+            <p class="hero-text">
+              Angelica solves pipe networks by finding the pressure at every node
+              and the flow rate through every link — simultaneously satisfying the
+              energy equation along each pipe and mass conservation at every junction.
+              The solver is a modified SIMPLE pressure-correction algorithm
+              (Patankar, 1980) adapted for pipe network topology.
+            </p>
+          </div>
+
+          <div class="hero-panel">
+            <div class="hero-card methods-summary-card">
+              <div class="card-label">Two-stage solution</div>
+              <div class="summary-stage">
+                <span class="summary-stage-tag">Stage 1 &mdash; Laminar</span>
+                <p>Exact solution for the linearised system. Converges in a single iteration for pure-pipe networks.</p>
+              </div>
+              <div class="summary-divider"></div>
+              <div class="summary-stage">
+                <span class="summary-stage-tag">Stage 2 &mdash; Nonlinear</span>
+                <p>Darcy-Weisbach friction, Colebrook-White closure, fittings and pumps. Seeded by the laminar field.</p>
+              </div>
+              <div class="summary-divider"></div>
+              <p class="summary-convergence">Convergence: nodal mass-flux residual $b_C \to 0$</p>
+            </div>
+          </div>
         </div>
       </header>
 

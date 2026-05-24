@@ -897,6 +897,8 @@ a {
   max-width: 420px;
   width: 100%;
   border-radius: var(--radius-md);
+  background: rgba(255, 252, 245, 0.96);
+  padding: 10px;
 }
 
 .algo-figure figcaption {

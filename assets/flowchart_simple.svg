@@ -17,8 +17,8 @@
 
   <!-- ── INITIALIZE ── -->
   <rect x="75" y="81" width="350" height="50" rx="10" fill="#edf7f7" stroke="#0c6c6b" stroke-width="2"/>
-  <text x="250" y="104" text-anchor="middle" fill="#094a5c" font-size="13" font-weight="700">Initialize — laminar seed</text>
-  <text x="250" y="122" text-anchor="middle" fill="#5b6974" font-size="12">Assume P* = 0 · Exact for pure-pipe networks</text>
+  <text x="250" y="104" text-anchor="middle" fill="#094a5c" font-size="13" font-weight="700">Initialize P* from boundary pressures</text>
+  <text x="250" y="122" text-anchor="middle" fill="#5b6974" font-size="12">Linear interpolation across interior nodes</text>
 
   <line x1="250" y1="131" x2="250" y2="149" stroke="#1d2a34" stroke-width="1.5" marker-end="url(#ah)"/>
 

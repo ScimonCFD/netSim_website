@@ -76,11 +76,7 @@
               $z$ — elevation &nbsp;&middot;&nbsp;
               $V$ — mean velocity
             </p>
-            <p>In laminar flow $f = 64/Re$ where $Re = \rho V D / \mu$, reducing this to the linear Poiseuille relation. In turbulent flow, $f$ depends on $Re$ and wall roughness through the Colebrook-White closure:</p>
-            <div class="eq-display">
-              $$\frac{1}{\sqrt{f}} = -2\log\!\left(\frac{\varepsilon/D}{3.7} + \frac{2.51}{Re\sqrt{f}}\right)$$
-            </div>
-            <p class="var-list">$\varepsilon$ — absolute wall roughness</p>
+            <p>In laminar flow $f = 64/Re$ where $Re = \rho V D / \mu$, reducing this to the linear Poiseuille relation. In turbulent flow, $f$ is a function of $Re$ and the relative wall roughness $\varepsilon/D$ — evaluated at each iteration via a closure relation (Colebrook-White).</p>
           </div>
 
           <div class="method-block">

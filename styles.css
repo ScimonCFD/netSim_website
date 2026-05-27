@@ -902,9 +902,11 @@ a {
 }
 
 .algo-figure figcaption {
-  display: inline-block;
+  display: block;
   margin-top: 18px;
-  max-width: 58ch;
+  width: min(100%, 420px);
+  margin-left: auto;
+  margin-right: auto;
   text-align: left;
   color: rgba(246, 241, 231, 0.62);
   font-size: 0.88rem;

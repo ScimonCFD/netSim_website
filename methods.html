@@ -103,7 +103,7 @@
           </p>
 
           <figure class="algo-figure">
-            <img src="assets/flowchart_simple.svg"
+            <img src="assets/flowchart_simple.svg?v=3"
                  alt="Two-stage SIMPLE pressure-correction algorithm flowchart"
                  class="algo-flowchart"/>
             <figcaption>
@@ -194,6 +194,37 @@
             <div class="eq-display">
               $$\Delta P = K_L\,\frac{\rho V^2}{2} \qquad \Longrightarrow \qquad a_f = -\!\left(\frac{2A}{K_L|V^*|}\right)_{\!f}$$
             </div>
+          </div>
+
+          <div class="method-block" id="pump">
+            <h3>Pump — curve-driven pressure changer</h3>
+            <p>
+              Pumps are treated as active pressure-changing devices. The current nodal
+              pressure field defines the head the pump must supply:
+            </p>
+            <div class="eq-display">
+              $$H_{\mathrm{req}} = -\frac{\Delta P}{\rho g}$$
+            </div>
+            <p>
+              The pump curve then returns the corresponding flow rate, written locally as
+              $Q = G(H_{\mathrm{req}})$. Angelica supports both single-point EPANET-style
+              pump definitions and piecewise-linear multi-point $Q$-Head tables.
+            </p>
+            <div class="eq-display">
+              $$Q = G(H_{\mathrm{req}}), \qquad V = \frac{Q}{A}$$
+            </div>
+            <p>
+              For pressure correction, the pump contributes the local slope of the curve.
+              This plays the same role as the hydraulic conductance of a pipe or fitting:
+            </p>
+            <div class="eq-display">
+              $$a_f \propto \frac{dQ}{d(\Delta P)} = \frac{dQ}{dH}\,\frac{1}{\rho g}$$
+            </div>
+            <p>
+              In other words, a pump enters the same nodal continuity system as every
+              other element. What changes is only the local constitutive law used to
+              relate pressure difference and flow.
+            </p>
           </div>
 
           <div class="method-block" id="boundary-conditions">

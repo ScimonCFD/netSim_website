@@ -1009,32 +1009,57 @@ a {
 }
 
 .vstar-grid {
+  display: grid;
+  gap: 14px;
   margin-top: 18px;
 }
 
-.vstar-card {
-  padding: 20px 22px;
+.vstar-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.95fr);
+  gap: 18px;
+  align-items: stretch;
+  padding: 18px 20px;
   border: 1px solid rgba(12, 108, 107, 0.18);
   border-radius: var(--radius-md);
   background: rgba(255, 252, 245, 0.96);
   box-shadow: 0 10px 26px rgba(8, 22, 30, 0.08);
 }
 
-.vstar-card h3 {
-  margin: 0 0 10px;
+.vstar-copy h3 {
+  margin: 0 0 8px;
   color: var(--ink);
   font-size: 1rem;
 }
 
-.section.dark .vstar-card p,
-.section.dark .vstar-card h3 {
+.vstar-copy p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.section.dark .vstar-copy p,
+.section.dark .vstar-copy h3 {
   color: var(--ink);
 }
 
-.vstar-card .eq-display {
-  margin-top: 14px;
-  margin-bottom: 0;
+.vstar-eq {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  min-height: 100%;
+  border-left: none;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(12, 108, 107, 0.14);
   background: rgba(12, 108, 107, 0.06);
+  color: var(--brand-deep);
+  text-align: center;
+}
+
+.vstar-eq .katex-display {
+  margin: 0;
 }
 
 .bc-note {
@@ -1062,6 +1087,10 @@ a {
 
 @media (max-width: 640px) {
   .bc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vstar-row {
     grid-template-columns: 1fr;
   }
 

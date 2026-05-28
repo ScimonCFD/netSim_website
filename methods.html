@@ -123,53 +123,61 @@
               equation selected for each element type.
             </p>
 
-            <div class="bc-grid vstar-grid">
-              <article class="info-card vstar-card">
-                <h3>Laminar pipes</h3>
-                <p>
-                  In Stage 1, pipe velocity is obtained from the linear laminar relation,
-                  including the elevation term. This is the Poiseuille-style form used to
-                  build the exact laminar seed:
-                </p>
-                <div class="eq-display">
+            <div class="vstar-grid">
+              <article class="vstar-row">
+                <div class="vstar-copy">
+                  <h3>Laminar pipes</h3>
+                  <p>
+                    In Stage 1, pipe velocity is obtained from the linear laminar relation,
+                    including the elevation term. This is the Poiseuille-style form used to
+                    build the exact laminar seed.
+                  </p>
+                </div>
+                <div class="eq-display vstar-eq">
                   $$V^* = \frac{D^2}{32\mu L}\left(\Delta P - \rho g \Delta z\right)$$
                 </div>
               </article>
 
-              <article class="info-card vstar-card">
-                <h3>Turbulent pipes</h3>
-                <p>
-                  In Stage 2, $V^*$ depends on the turbulent equation selected by the
-                  user. When Colebrook-White is selected, the Darcy-Weisbach relation is
-                  closed through the Colebrook friction factor. If another model is
-                  selected, such as Hazen-Williams, $V^*$ is evaluated using that
-                  selected relation instead.
-                </p>
-                <div class="eq-display">
+              <article class="vstar-row">
+                <div class="vstar-copy">
+                  <h3>Turbulent pipes</h3>
+                  <p>
+                    In Stage 2, $V^*$ depends on the turbulent equation selected by the
+                    user. When Colebrook-White is selected, the Darcy-Weisbach relation is
+                    closed through the Colebrook friction factor. If another model is
+                    selected, such as Hazen-Williams, $V^*$ is evaluated using that
+                    selected relation instead.
+                  </p>
+                </div>
+                <div class="eq-display vstar-eq">
                   $$\Delta P - \rho g \Delta z = \frac{\rho f L}{2D}\,V\,|V|$$
                 </div>
               </article>
 
-              <article class="info-card vstar-card">
-                <h3>Fittings and local-loss devices</h3>
-                <p>
-                  For fittings, $V^*$ is computed from the local-loss relation using the
-                  fitting loss coefficient $K_L$. The preset fitting coefficients
-                  currently included in Angelica follow the values proposed in Munson.
-                </p>
-                <div class="eq-display">
+              <article class="vstar-row">
+                <div class="vstar-copy">
+                  <h3>Fittings and local-loss devices</h3>
+                  <p>
+                    For fittings, $V^*$ is computed from the local-loss relation using the
+                    fitting loss coefficient $K_L$. The preset fitting coefficients
+                    currently included in Angelica follow the values proposed in Munson.
+                  </p>
+                </div>
+                <div class="eq-display vstar-eq">
                   $$V^* = \operatorname{sign}(\Delta P)\sqrt{\frac{2|\Delta P|}{K_L \rho}}$$
                 </div>
               </article>
 
-              <article class="info-card vstar-card">
-                <h3>Pumps</h3>
-                <p>
-                  For pumps, the current pressure difference is converted into the head
-                  the pump must supply. The pump curve then returns the corresponding
-                  flow rate, which is converted to $V^*$ through the element area.
-                </p>
-                <div class="eq-display">
+              <article class="vstar-row">
+                <div class="vstar-copy">
+                  <h3>Pumps</h3>
+                  <p>
+                    For pumps, the current pressure difference is converted into the head
+                    the pump must supply. The pump curve then returns the corresponding
+                    flow rate, which is converted to $V^*$ through the element area.
+                  </p>
+                </div>
+                <div class="eq-display vstar-eq">
                   $$H_{\mathrm{req}} = -\frac{\Delta P}{\rho g}, \qquad Q = G(H_{\mathrm{req}}), \qquad V^* = \frac{Q}{A}$$
                 </div>
               </article>

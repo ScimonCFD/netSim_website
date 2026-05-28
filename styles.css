@@ -1016,32 +1016,23 @@ a {
 
 .vstar-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.95fr);
-  gap: 18px;
-  align-items: stretch;
-  padding: 18px 20px;
-  border: 1px solid rgba(12, 108, 107, 0.18);
-  border-radius: var(--radius-md);
-  background: rgba(255, 252, 245, 0.96);
-  box-shadow: 0 10px 26px rgba(8, 22, 30, 0.08);
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 18px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .vstar-copy h3 {
-  margin: 0 0 8px;
-  color: var(--ink);
+  margin: 0 0 6px;
+  color: #f6f1e7;
   font-size: 1rem;
 }
 
 .vstar-copy p {
   margin: 0;
-  color: var(--ink);
-  font-size: 0.95rem;
-  line-height: 1.65;
-}
-
-.section.dark .vstar-copy p,
-.section.dark .vstar-copy h3 {
-  color: var(--ink);
+  color: rgba(246, 241, 231, 0.82);
+  font-size: 0.96rem;
+  line-height: 1.62;
 }
 
 .vstar-eq {
@@ -1049,17 +1040,24 @@ a {
   align-items: center;
   justify-content: center;
   margin: 0;
-  min-height: 100%;
-  border-left: none;
+  min-height: 84px;
+  padding: 8px 16px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(12, 108, 107, 0.14);
-  background: rgba(12, 108, 107, 0.06);
-  color: var(--brand-deep);
+  border-left: 3px solid rgba(12, 108, 107, 0.9);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  background: rgba(255, 250, 240, 0.92);
+  color: #163441;
   text-align: center;
 }
 
 .vstar-eq .katex-display {
   margin: 0;
+}
+
+.vstar-eq .katex {
+  color: #163441;
 }
 
 .bc-note {

@@ -1008,6 +1008,35 @@ a {
   margin-top: 14px;
 }
 
+.vstar-grid {
+  margin-top: 18px;
+}
+
+.vstar-card {
+  padding: 20px 22px;
+  border: 1px solid rgba(12, 108, 107, 0.18);
+  border-radius: var(--radius-md);
+  background: rgba(255, 252, 245, 0.96);
+  box-shadow: 0 10px 26px rgba(8, 22, 30, 0.08);
+}
+
+.vstar-card h3 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.section.dark .vstar-card p,
+.section.dark .vstar-card h3 {
+  color: var(--ink);
+}
+
+.vstar-card .eq-display {
+  margin-top: 14px;
+  margin-bottom: 0;
+  background: rgba(12, 108, 107, 0.06);
+}
+
 .bc-note {
   margin-top: 14px;
   color: var(--muted);

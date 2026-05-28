@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
     <link rel="icon" href="assets/logomark.svg" type="image/svg+xml" />
   </head>
   <body>
@@ -103,7 +103,7 @@
           </p>
 
           <figure class="algo-figure">
-            <img src="assets/flowchart_simple.svg?v=3"
+            <img src="assets/flowchart_simple.svg?v=4"
                  alt="Two-stage SIMPLE pressure-correction algorithm flowchart"
                  class="algo-flowchart"/>
             <figcaption>
@@ -123,8 +123,8 @@
               equation selected for each element type.
             </p>
 
-            <div class="bc-grid">
-              <article class="info-card">
+            <div class="bc-grid vstar-grid">
+              <article class="info-card vstar-card">
                 <h3>Laminar pipes</h3>
                 <p>
                   In Stage 1, pipe velocity is obtained from the linear laminar relation,
@@ -136,7 +136,7 @@
                 </div>
               </article>
 
-              <article class="info-card">
+              <article class="info-card vstar-card">
                 <h3>Turbulent pipes</h3>
                 <p>
                   In Stage 2, $V^*$ depends on the turbulent equation selected by the
@@ -150,7 +150,7 @@
                 </div>
               </article>
 
-              <article class="info-card">
+              <article class="info-card vstar-card">
                 <h3>Fittings and local-loss devices</h3>
                 <p>
                   For fittings, $V^*$ is computed from the local-loss relation using the
@@ -162,7 +162,7 @@
                 </div>
               </article>
 
-              <article class="info-card">
+              <article class="info-card vstar-card">
                 <h3>Pumps</h3>
                 <p>
                   For pumps, the current pressure difference is converted into the head
